@@ -241,7 +241,7 @@ function initHeroThreeCanvas() {
   const isMobile = window.innerWidth < 768;
 
   // ─── Cyberpunk Coloured Particle Field ───────────────────────────────────
-  const particleCount = isMobile ? 45 : 120;
+  const particleCount = isMobile ? 55 : 135;
   const pGeo = new THREE.BufferGeometry();
   const pPos = new Float32Array(particleCount * 3);
   const pCol = new Float32Array(particleCount * 3);
@@ -256,10 +256,10 @@ function initHeroThreeCanvas() {
   ];
 
   for (let i = 0; i < particleCount; i++) {
-    pPos[i*3]   = (Math.random() - 0.5) * 550;
-    pPos[i*3+1] = (Math.random() - 0.5) * 350;
+    pPos[i*3]   = (Math.random() - 0.5) * 560;
+    pPos[i*3+1] = (Math.random() - 0.5) * 360;
     pPos[i*3+2] = (Math.random() - 0.5) * 160;
-    pVel.push({ x: (Math.random()-0.5)*0.08, y: (Math.random()-0.5)*0.06, z: (Math.random()-0.5)*0.05 });
+    pVel.push({ x: (Math.random()-0.5)*0.10, y: (Math.random()-0.5)*0.08, z: (Math.random()-0.5)*0.06 });
     const c = palette[Math.floor(Math.random() * palette.length)];
     pCol[i*3] = c[0]; pCol[i*3+1] = c[1]; pCol[i*3+2] = c[2];
   }
@@ -267,43 +267,100 @@ function initHeroThreeCanvas() {
   pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
   pGeo.setAttribute('color',    new THREE.BufferAttribute(pCol, 3));
   const pMat = new THREE.PointsMaterial({
-    size: isMobile ? 1.6 : 2.2,
+    size: isMobile ? 1.8 : 2.5,
     vertexColors: true,
     transparent: true,
-    opacity: 0.45,
+    opacity: 0.55,
     sizeAttenuation: true
   });
   const particles = new THREE.Points(pGeo, pMat);
   scene.add(particles);
 
+  // ─── Interactive Constellation Laser Connecting Lines ─────────────────────
+  const maxLineCount = isMobile ? 40 : 100;
+  const linePositions = new Float32Array(maxLineCount * 2 * 3);
+  const lineColors = new Float32Array(maxLineCount * 2 * 3);
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+  lineGeo.setAttribute('color',    new THREE.BufferAttribute(lineColors, 3));
+  const lineMat = new THREE.LineBasicMaterial({
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.35,
+    blending: THREE.AdditiveBlending
+  });
+  const linesMesh = new THREE.LineSegments(lineGeo, lineMat);
+  scene.add(linesMesh);
+
+  // ─── Floating Holographic Tumbling Cyber Polyhedra ───────────────────────
+  const polyGroup = new THREE.Group();
+  scene.add(polyGroup);
+  const polyhedra = [];
+  const polyGeos = [
+    new THREE.OctahedronGeometry(6.5, 0),
+    new THREE.IcosahedronGeometry(7.0, 0),
+    new THREE.TetrahedronGeometry(6.0, 0)
+  ];
+  const polyColors = [0x00FFF5, 0xFF9900, 0x8B5CF6, 0x10B981, 0xFF2D78];
+  const polyCount = isMobile ? 4 : 8;
+  for (let i = 0; i < polyCount; i++) {
+    const pMeshMat = new THREE.MeshBasicMaterial({
+      color: polyColors[i % polyColors.length],
+      wireframe: true,
+      transparent: true,
+      opacity: 0.28
+    });
+    const pMesh = new THREE.Mesh(polyGeos[i % polyGeos.length], pMeshMat);
+    pMesh.position.set(
+      (Math.random() - 0.5) * 480,
+      (Math.random() - 0.5) * 280,
+      (Math.random() - 0.5) * 120 - 30
+    );
+    pMesh.userData = {
+      rotX: (Math.random() - 0.5) * 0.016,
+      rotY: (Math.random() - 0.5) * 0.020,
+      rotZ: (Math.random() - 0.5) * 0.012,
+      baseY: pMesh.position.y,
+      floatSpeed: 0.012 + Math.random() * 0.01,
+      floatOffset: Math.random() * Math.PI * 2
+    };
+    polyGroup.add(pMesh);
+    polyhedra.push(pMesh);
+  }
+
   // ─── AWS Logo — Big, Stationary, Ultra-Shiny Metallic Background ────────
   const logoGroup = new THREE.Group();
-  logoGroup.position.set(0, 0, 0); // Stationary in center background
+  logoGroup.position.set(0, 0, 0);
   scene.add(logoGroup);
 
   // Dynamic Lighting Setup with Travelling Shiny Specular Glint
-  const keyLight = new THREE.DirectionalLight(0xffffff, 3.4);
+  const keyLight = new THREE.DirectionalLight(0xffffff, 3.6);
   keyLight.position.set(50, 70, 90);
   scene.add(keyLight);
 
-  const rimLight = new THREE.DirectionalLight(0x00FFF5, 2.6);
+  const rimLight = new THREE.DirectionalLight(0x00FFF5, 2.8);
   rimLight.position.set(-70, 40, 50);
   scene.add(rimLight);
 
-  // Dynamic travelling specular shine light that sweeps across the letters
-  const shineLight = new THREE.PointLight(0xffffff, 4.5, 320);
+  // Travelling specular shine light that sweeps across the letters
+  const shineLight = new THREE.PointLight(0xffffff, 4.8, 340);
   shineLight.position.set(0, 20, 60);
   scene.add(shineLight);
 
-  const orangeLight = new THREE.PointLight(0xFF9900, 5.5, 300);
+  // Interactive mouse point light
+  const mouseFollowLight = new THREE.PointLight(0x00FFF5, 3.5, 300);
+  mouseFollowLight.position.set(0, 0, 70);
+  scene.add(mouseFollowLight);
+
+  const orangeLight = new THREE.PointLight(0xFF9900, 6.0, 320);
   orangeLight.position.set(0, -35, 55);
   scene.add(orangeLight);
 
-  const magentaLight = new THREE.PointLight(0xFF2D78, 1.4, 200);
+  const magentaLight = new THREE.PointLight(0xFF2D78, 1.6, 220);
   magentaLight.position.set(-50, -30, 30);
   scene.add(magentaLight);
 
-  scene.add(new THREE.AmbientLight(0x08121C, 2.5));
+  scene.add(new THREE.AmbientLight(0x08121C, 2.6));
 
   let awsLogoModel = null;
   let arrowMat = null;
@@ -316,8 +373,9 @@ function initHeroThreeCanvas() {
       const box = new THREE.Box3().setFromObject(awsLogoModel);
       const center = box.getCenter(new THREE.Vector3());
       const size   = box.getSize(new THREE.Vector3());
-      // Make it BIG (scale ~92 on desktop, ~68 on mobile)
-      const targetSize = isMobile ? 68.0 : 92.0;
+      
+      // Increased size to fit the background grandly (~175 on desktop, ~110 on mobile)
+      const targetSize = isMobile ? 110.0 : 175.0;
       const s = targetSize / (Math.max(size.x, size.y, size.z) || 1);
       awsLogoModel.scale.setScalar(s);
       awsLogoModel.position.set(-center.x * s, -center.y * s, -center.z * s);
@@ -328,14 +386,14 @@ function initHeroThreeCanvas() {
         roughness: 0.10,          // Mirror gloss
         metalness: 0.88,          // High metallic
         emissive: 0xFF7700,
-        emissiveIntensity: 0.80
+        emissiveIntensity: 0.85
       });
       letterMat = new THREE.MeshStandardMaterial({
         color: 0xF8FAFC,
         roughness: 0.08,          // Ultra-glossy specular reflection
         metalness: 0.96,          // Brilliant chrome finish
         emissive: 0x051220,
-        emissiveIntensity: 0.25
+        emissiveIntensity: 0.30
       });
       awsLogoModel.traverse(c => {
         if (c.isMesh) c.material = c.name.toLowerCase().includes('arrow') ? arrowMat : letterMat;
@@ -344,37 +402,100 @@ function initHeroThreeCanvas() {
     }, undefined, err => console.warn('[AWS SBG] GLTF load error:', err));
   }
 
-  // ─── Rock-Solid Damped Cursor Parallax ──────────────────────────────────
+  // ─── Rock-Solid Damped Cursor Parallax & Interaction ─────────────────────
   let rawMX = 0, rawMY = 0, smMX = 0, smMY = 0;
   window.addEventListener('mousemove', e => {
-    // Subtle normalized coordinates (-1 to 1)
     const nx = (e.clientX / window.innerWidth) * 2 - 1;
     const ny = (e.clientY / window.innerHeight) * 2 - 1;
-    rawMX = nx * 0.12; // Bounded to subtle ~7 degrees
-    rawMY = ny * 0.08;
+    rawMX = nx * 0.14;
+    rawMY = ny * 0.10;
   }, { passive: true });
 
-  // ─── Animation Loop — Stationary, Grand, Shiny ─────────────────────────
+  // ─── Dynamic Interactive Click Energy Shockwave ─────────────────────────
+  const shockwaves = [];
+  const shockGeo = new THREE.RingGeometry(2, 5.5, 32);
+
+  window.addEventListener('pointerdown', e => {
+    // Avoid triggering on buttons / inputs
+    if (e.target.closest('button, a, input, select, textarea, .glass-card')) return;
+
+    const nx = (e.clientX / window.innerWidth) * 2 - 1;
+    const ny = -(e.clientY / window.innerHeight) * 2 + 1;
+    const col = Math.random() > 0.5 ? 0x00FFF5 : 0xFF9900;
+    const shockMat = new THREE.MeshBasicMaterial({
+      color: col,
+      transparent: true,
+      opacity: 0.85,
+      side: THREE.DoubleSide
+    });
+    const ring = new THREE.Mesh(shockGeo, shockMat);
+    ring.position.set(nx * 190, ny * 120, 20);
+    scene.add(ring);
+    shockwaves.push({ mesh: ring, scale: 1.0, opacity: 0.85 });
+
+    // Flash travelling shine light with intense pulse
+    shineLight.intensity = 8.5;
+  });
+
+  // ─── Animation Loop — Fluid Motion, Dynamic Lines, Floating Polyhedra ───
   let time = 0;
   function animate() {
     requestAnimationFrame(animate);
-    time += 0.003;
+    time += 0.0035;
 
     // Heavy exponential damping on mouse for rock-solid stability
-    smMX += (rawMX - smMX) * 0.025;
-    smMY += (rawMY - smMY) * 0.025;
+    smMX += (rawMX - smMX) * 0.028;
+    smMY += (rawMY - smMY) * 0.028;
 
     // Travelling specular shine glint across the shiny letters
-    shineLight.position.x = Math.sin(time * 0.85) * 115;
-    shineLight.position.y = Math.cos(time * 0.55) * 35;
-    shineLight.position.z = 60 + Math.sin(time * 0.4) * 10;
+    shineLight.position.x = Math.sin(time * 0.85) * 140;
+    shineLight.position.y = Math.cos(time * 0.55) * 45;
+    shineLight.position.z = 65 + Math.sin(time * 0.4) * 15;
+    shineLight.intensity += (4.8 - shineLight.intensity) * 0.04;
 
+    // Interactive mouse follow light in 3D
+    mouseFollowLight.position.x = smMX * 280;
+    mouseFollowLight.position.y = -smMY * 180;
+    mouseFollowLight.position.z = 70 + Math.sin(time * 1.5) * 12;
+
+    // Dynamic Multi-Harmonic Floating Motion for AWS Logo
     if (awsLogoModel) {
-      // Stationary in center background with slow majestic breathing
-      logoGroup.position.set(0, 5 + Math.sin(time * 0.5) * 1.5, 0);
-      logoGroup.rotation.y = Math.sin(time * 0.22) * 0.16 + smMX;
-      logoGroup.rotation.x = Math.sin(time * 0.16) * 0.06 - smMY;
-      logoGroup.scale.setScalar(1 + Math.sin(time * 0.6) * 0.012);
+      // Floating vertical levitation + gentle horizontal sway
+      logoGroup.position.set(
+        Math.sin(time * 0.45) * 3.5,
+        8 + Math.sin(time * 0.9) * 4.8 + Math.cos(time * 1.5) * 2.0,
+        0
+      );
+      // Fluid yaw, pitch, and roll
+      logoGroup.rotation.y = Math.sin(time * 0.32) * 0.22 + smMX * 1.3;
+      logoGroup.rotation.x = Math.sin(time * 0.22) * 0.10 - smMY * 0.9;
+      logoGroup.rotation.z = Math.cos(time * 0.38) * 0.04 + (smMX * 0.06);
+      // Gentle rhythmic breathing scale
+      logoGroup.scale.setScalar(1 + Math.sin(time * 0.75) * 0.022);
+    }
+
+    // Floating Tumbling Polyhedra
+    for (let i = 0; i < polyhedra.length; i++) {
+      const pm = polyhedra[i];
+      pm.rotation.x += pm.userData.rotX;
+      pm.rotation.y += pm.userData.rotY;
+      pm.rotation.z += pm.userData.rotZ;
+      pm.position.y = pm.userData.baseY + Math.sin(time * 1.2 + pm.userData.floatOffset) * 8.0;
+    }
+
+    // Interactive Click Shockwaves update
+    for (let i = shockwaves.length - 1; i >= 0; i--) {
+      const sw = shockwaves[i];
+      sw.scale += 2.4;
+      sw.opacity -= 0.022;
+      sw.mesh.scale.setScalar(sw.scale);
+      sw.mesh.material.opacity = Math.max(0, sw.opacity);
+      if (sw.opacity <= 0) {
+        scene.remove(sw.mesh);
+        sw.mesh.geometry.dispose();
+        sw.mesh.material.dispose();
+        shockwaves.splice(i, 1);
+      }
     }
 
     // Particle field slow drift in background
@@ -383,13 +504,41 @@ function initHeroThreeCanvas() {
       pos[i*3]   += pVel[i].x;
       pos[i*3+1] += pVel[i].y;
       pos[i*3+2] += pVel[i].z;
-      if (Math.abs(pos[i*3])   > 270) pVel[i].x *= -1;
-      if (Math.abs(pos[i*3+1]) > 175) pVel[i].y *= -1;
-      if (Math.abs(pos[i*3+2]) >  80) pVel[i].z *= -1;
+      if (Math.abs(pos[i*3])   > 280) pVel[i].x *= -1;
+      if (Math.abs(pos[i*3+1]) > 180) pVel[i].y *= -1;
+      if (Math.abs(pos[i*3+2]) >  85) pVel[i].z *= -1;
     }
     pGeo.attributes.position.needsUpdate = true;
-    particles.rotation.y += 0.00015;
-    particles.rotation.x += 0.00004;
+    particles.rotation.y += 0.00018;
+    particles.rotation.x += 0.00005;
+
+    // Real-Time Constellation Laser Connections
+    let lineIdx = 0;
+    for (let i = 0; i < particleCount && lineIdx < maxLineCount; i++) {
+      for (let j = i + 1; j < particleCount && lineIdx < maxLineCount; j++) {
+        const dx = pos[i*3] - pos[j*3];
+        const dy = pos[i*3+1] - pos[j*3+1];
+        const dz = pos[i*3+2] - pos[j*3+2];
+        const distSq = dx * dx + dy * dy + dz * dz;
+        if (distSq < 3200) { // ~56 units
+          const pA = lineIdx * 6;
+          linePositions[pA]   = pos[i*3];
+          linePositions[pA+1] = pos[i*3+1];
+          linePositions[pA+2] = pos[i*3+2];
+          linePositions[pA+3] = pos[j*3];
+          linePositions[pA+4] = pos[j*3+1];
+          linePositions[pA+5] = pos[j*3+2];
+
+          const alpha = Math.max(0.1, 1.0 - (distSq / 3200));
+          lineColors[pA]   = 0.0; lineColors[pA+1] = alpha * 0.95; lineColors[pA+2] = alpha;
+          lineColors[pA+3] = alpha; lineColors[pA+4] = alpha * 0.6; lineColors[pA+5] = 0.0;
+          lineIdx++;
+        }
+      }
+    }
+    lineGeo.setDrawRange(0, lineIdx * 2);
+    lineGeo.attributes.position.needsUpdate = true;
+    lineGeo.attributes.color.needsUpdate = true;
 
     renderer.render(scene, camera);
   }

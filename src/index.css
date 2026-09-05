@@ -1064,12 +1064,15 @@ button {
 /* ---------- FIXED BACKGROUND THREE.JS CANVAS ---------- */
 #hero-three-canvas {
   position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw !important;
-  height: 100vh !important;
+  top: -2%;
+  left: -2%;
+  width: 104vw !important;
+  height: 104vh !important;
   pointer-events: none;
   z-index: 0 !important;
+  filter: blur(3.5px) contrast(1.16) brightness(1.08);
+  transform: translate3d(0, 0, 0);
+  will-change: filter, transform;
 }
 
 /* ---------- CYBER HORIZON GRID & DATA STREAMS ---------- */

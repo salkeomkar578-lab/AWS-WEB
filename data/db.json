@@ -380,7 +380,7 @@
     {
       "id": "cloudguard-sentinel",
       "title": "CloudGuard Sentinel",
-      "category": "Cloud & DevOps",
+      "category": "",
       "tagline": "Automated AWS Free-Tier Cost Anomaly & Compliance Hunter",
       "summary": "A student-designed AWS Lambda utility that audits student AWS accounts for orphaned EBS volumes, idle NAT gateways, and unencrypted S3 buckets, preventing surprise cloud bills.",
       "isDemo": true,
@@ -447,7 +447,7 @@
     {
       "id": "campusgrid-iot",
       "title": "CampusGrid Smart Energy",
-      "category": "Data & IoT",
+      "category": "",
       "tagline": "VPKBIET Green Campus Micro-Grid Analytics",
       "summary": "Real-time energy telemetry across VPKBIET academic buildings. Visualizes solar generation and HVAC load to reduce peak institutional electricity tariffs.",
       "isDemo": true,
@@ -1048,6 +1048,22 @@
     }
   ],
   "recruitments": [
+    {
+      "id": "app-5506",
+      "name": "om",
+      "email": "na@vpkbiet.org",
+      "prn": "6465416555555554",
+      "branch": "Computer Engineering",
+      "year": "BE",
+      "domain": "Software Engineering",
+      "skills": "xexexx",
+      "github": "",
+      "linkedin": "",
+      "portfolio": "",
+      "pitch": "xr3x2rx2x2ergwfvfd",
+      "status": "Under Review",
+      "createdAt": "2026-09-05T19:50:15.507Z"
+    },
     {
       "id": "app-7587",
       "name": "Test Candidate",

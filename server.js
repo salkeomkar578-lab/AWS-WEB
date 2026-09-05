@@ -101,7 +101,7 @@ function sendJson(res, statusCode, data) {
   res.end(JSON.stringify(data));
 }
 
-const server = http.createServer(async (req, res) => {
+async function handleRequest(req, res) {
   // CORS Preflight
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
@@ -492,9 +492,11 @@ const server = http.createServer(async (req, res) => {
       }
     });
   });
-});
+}
 
-// Vercel Serverless Function & local Node support
+const server = http.createServer(handleRequest);
+
+// Local development server runner
 if (require.main === module || !process.env.VERCEL) {
   server.listen(PORT, () => {
     console.log(`🚀 AWS SBG VPKBIET Platform running at http://localhost:${PORT}`);
@@ -503,4 +505,6 @@ if (require.main === module || !process.env.VERCEL) {
   });
 }
 
-module.exports = server;
+module.exports = handleRequest;
+module.exports.server = server;
+module.exports.handleRequest = handleRequest;
