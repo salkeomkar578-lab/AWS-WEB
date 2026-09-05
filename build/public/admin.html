@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS SBG VPKBIET — Admin Management Console</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/src/index.css" />
+    <link rel="stylesheet" href="/src/admin.css" />
+  </head>
+  <body class="admin-body">
+
+    <!-- ==========================================
+         01. AUTHENTICATION / LOGIN OVERLAY
+         ========================================== -->
+    <div id="admin-login-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content" style="max-width: 440px; padding: 2.5rem; text-align: center;">
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255, 153, 0, 0.15); border: 1px solid var(--aws-smile-orange); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto;">
+          <i data-lucide="shield-check" style="width: 24px; height: 24px; color: var(--aws-smile-orange);"></i>
+        </div>
+
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Admin Authentication</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.75rem;">
+          Sign in to manage AWS SBG VPKBIET events, projects, team members, and applications.
+        </p>
+
+        <form id="admin-login-form">
+          <div class="form-group" style="text-align: left;">
+            <label class="form-label" for="login-username">Username</label>
+            <input type="text" id="login-username" class="form-input" value="admin" required />
+          </div>
+
+          <div class="form-group" style="text-align: left;">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" value="awssbg2026" required />
+          </div>
+
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.5rem; text-align: left;">
+            Demo Credentials: <strong style="color: var(--aws-smile-orange);">admin</strong> / <strong style="color: var(--aws-smile-orange);">awssbg2026</strong>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 0.75rem;">
+            Authenticate & Access Dashboard
+          </button>
+
+          <a href="/" class="btn btn-ghost" style="width: 100%; font-size: 0.85rem;">
+            ← Return to Public Site
+          </a>
+        </form>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         02. SIDEBAR NAVIGATION
+         ========================================== -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-brand">
+        <div style="width: 32px; height: 32px; border-radius: 6px; background: #111827; border: 1px solid #232F3E; display: flex; align-items: center; justify-content: center;">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <path d="M7 16L12 11L17 16L12 21L7 16Z" fill="#00A4E4"/>
+            <path d="M15 16L20 11L25 16L20 21L15 16Z" fill="#FF9900"/>
+            <path d="M10 23C13.5 25 18.5 25 22 23" stroke="#FF9900" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">AWS SBG Admin</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">VPKBIET BARAMATI</div>
+        </div>
+      </div>
+
+      <ul class="admin-nav-list">
+        <li class="admin-nav-item active" data-tab="overview">
+          <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
+          <span>Overview</span>
+        </li>
+        <li class="admin-nav-item" data-tab="projects">
+          <i data-lucide="layers" style="width: 18px; height: 18px;"></i>
+          <span>Projects</span>
+          <span class="badge-count" id="nav-count-projects">0</span>
+        </li>
+        <li class="admin-nav-item" data-tab="events">
+          <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+          <span>Events</span>
+          <span class="badge-count" id="nav-count-events">0</span>
+        </li>
+        <li class="admin-nav-item" data-tab="members">
+          <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+          <span>Team Members</span>
+          <span class="badge-count" id="nav-count-members">0</span>
+        </li>
+        <li class="admin-nav-item" data-tab="domains">
+          <i data-lucide="cpu" style="width: 18px; height: 18px;"></i>
+          <span>Domains</span>
+        </li>
+        <li class="admin-nav-item" data-tab="recruitments">
+          <i data-lucide="user-plus" style="width: 18px; height: 18px;"></i>
+          <span>Recruitments</span>
+          <span class="badge-count" id="nav-count-applications">0</span>
+        </li>
+        <li class="admin-nav-item" data-tab="messages">
+          <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+          <span>Messages</span>
+          <span class="badge-count" id="nav-count-messages">0</span>
+        </li>
+        <li class="admin-nav-item" data-tab="settings">
+          <i data-lucide="settings" style="width: 18px; height: 18px;"></i>
+          <span>Site Settings</span>
+        </li>
+      </ul>
+
+      <div style="padding: 1rem 1.25rem; border-top: 1px solid var(--admin-border); margin-top: auto;">
+        <a href="/" class="btn btn-secondary" style="width: 100%; font-size: 0.82rem; padding: 0.5rem 0.75rem;">
+          <i data-lucide="external-link" style="width: 14px; height: 14px;"></i> View Public Portal
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==========================================
+         03. MAIN DASHBOARD CONTENT AREA
+         ========================================== -->
+    <div class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button id="admin-sidebar-toggle" class="btn-ghost icon-btn" style="display: none;">
+            <i data-lucide="menu" style="width: 20px; height: 20px;"></i>
+          </button>
+          <div class="admin-demo-banner">
+            <i data-lucide="database" style="width: 14px; height: 14px;"></i>
+            DEMO ENVIRONMENT — SAMPLE CONTENT
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+            Role: <span style="color: var(--aws-smile-orange); font-weight: 700;">SUPER_ADMIN</span>
+          </div>
+          <button id="admin-logout-btn" class="btn btn-ghost" style="padding: 0.4rem 0.8rem; font-size: 0.82rem;">
+            <i data-lucide="log-out" style="width: 14px; height: 14px;"></i> Sign Out
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views -->
+      <main class="admin-content-area">
+
+        <!-- TAB: OVERVIEW -->
+        <div id="tab-overview" class="admin-view-panel">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+            <div>
+              <h2>Command Center Overview</h2>
+              <p style="margin-top: 0.25rem;">Real-time metrics, active applications, and community content controls.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button class="btn btn-primary open-modal-btn" data-modal="project-modal" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                + Add Project
+              </button>
+              <button class="btn btn-secondary open-modal-btn" data-modal="event-modal" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                + Add Event
+              </button>
+            </div>
+          </div>
+
+          <!-- Metrics Grid -->
+          <div class="admin-metrics-grid">
+            <div class="admin-metric-card">
+              <div>
+                <div class="admin-metric-label">Published Projects</div>
+                <div class="admin-metric-val" id="metric-projects">0</div>
+              </div>
+              <i data-lucide="layers" style="width: 28px; height: 28px; color: var(--aws-smile-orange);"></i>
+            </div>
+            <div class="admin-metric-card">
+              <div>
+                <div class="admin-metric-label">Upcoming Events</div>
+                <div class="admin-metric-val" id="metric-events">0</div>
+              </div>
+              <i data-lucide="calendar" style="width: 28px; height: 28px; color: var(--aws-cloud-blue);"></i>
+            </div>
+            <div class="admin-metric-card">
+              <div>
+                <div class="admin-metric-label">Active Team Members</div>
+                <div class="admin-metric-val" id="metric-members">0</div>
+              </div>
+              <i data-lucide="users" style="width: 28px; height: 28px; color: var(--accent-emerald);"></i>
+            </div>
+            <div class="admin-metric-card">
+              <div>
+                <div class="admin-metric-label">Builder Applications</div>
+                <div class="admin-metric-val" id="metric-applications">0</div>
+              </div>
+              <i data-lucide="user-plus" style="width: 28px; height: 28px; color: var(--accent-purple);"></i>
+            </div>
+          </div>
+
+          <!-- Recent Applications Table -->
+          <div class="admin-card">
+            <div class="admin-card-header">
+              <div style="font-weight: 700; font-size: 1rem;">Recent Recruitment Submissions</div>
+              <button class="btn-ghost" onclick="switchAdminTab('recruitments')" style="font-size: 0.82rem; color: var(--aws-smile-orange);">
+                View All Applications →
+              </button>
+            </div>
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Candidate Name</th>
+                    <th>PRN</th>
+                    <th>Domain Track</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-recent-applications">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: PROJECTS -->
+        <div id="tab-projects" class="admin-view-panel" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <div>
+              <h2>Projects Management</h2>
+              <p style="margin-top: 0.25rem;">Create, edit, feature, and manage student demo project case studies.</p>
+            </div>
+            <button class="btn btn-primary open-modal-btn" data-modal="project-modal">
+              + New Project
+            </button>
+          </div>
+
+          <div class="admin-card">
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Project Title</th>
+                    <th>Category</th>
+                    <th>AWS Services</th>
+                    <th>Status</th>
+                    <th>Featured</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-projects-body">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: EVENTS -->
+        <div id="tab-events" class="admin-view-panel" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <div>
+              <h2>Events & Workshops</h2>
+              <p style="margin-top: 0.25rem;">Manage upcoming technical bootcamps, dates, speakers, and capacity.</p>
+            </div>
+            <button class="btn btn-primary open-modal-btn" data-modal="event-modal">
+              + New Event
+            </button>
+          </div>
+
+          <div class="admin-card">
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Event Title</th>
+                    <th>Type</th>
+                    <th>Date & Time</th>
+                    <th>Speaker</th>
+                    <th>Venue</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-events-body">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: MEMBERS -->
+        <div id="tab-members" class="admin-view-panel" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <div>
+              <h2>Team & Hierarchy</h2>
+              <p style="margin-top: 0.25rem;">Manage faculty advisors, team leadership, domain leads, and student builders.</p>
+            </div>
+            <button class="btn btn-primary open-modal-btn" data-modal="member-modal">
+              + New Member
+            </button>
+          </div>
+
+          <div class="admin-card">
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Role / Tier</th>
+                    <th>Domain</th>
+                    <th>Branch & Year</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-members-body">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: DOMAINS -->
+        <div id="tab-domains" class="admin-view-panel" style="display: none;">
+          <div style="margin-bottom: 1.5rem;">
+            <h2>Community Builder Domains</h2>
+            <p style="margin-top: 0.25rem;">The 8 core technical domains active in AWS SBG VPKBIET.</p>
+          </div>
+
+          <div id="domains-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+            <!-- Rendered by admin.js -->
+          </div>
+        </div>
+
+        <!-- TAB: RECRUITMENTS -->
+        <div id="tab-recruitments" class="admin-view-panel" style="display: none;">
+          <div style="margin-bottom: 1.5rem;">
+            <h2>Recruitment Pipeline & Applications</h2>
+            <p style="margin-top: 0.25rem;">Review student submissions, change candidate status, and manage the onboarding pipeline.</p>
+          </div>
+
+          <div class="admin-card">
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>PRN</th>
+                    <th>Domain Preference</th>
+                    <th>Technical Skills</th>
+                    <th>Status Workflow</th>
+                    <th>Pitch</th>
+                  </tr>
+                </thead>
+                <tbody id="table-recruitments-body">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: MESSAGES -->
+        <div id="tab-messages" class="admin-view-panel" style="display: none;">
+          <div style="margin-bottom: 1.5rem;">
+            <h2>Contact Submissions & Inquiries</h2>
+            <p style="margin-top: 0.25rem;">Inquiries submitted through the public website contact form.</p>
+          </div>
+
+          <div class="admin-card">
+            <div style="overflow-x: auto;">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Sender</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="table-messages-body">
+                  <!-- Rendered by admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: SETTINGS -->
+        <div id="tab-settings" class="admin-view-panel" style="display: none;">
+          <div style="margin-bottom: 1.5rem;">
+            <h2>Global Platform Settings</h2>
+            <p style="margin-top: 0.25rem;">Configure feature flags, AI assistant visibility, and reset demo datasets.</p>
+          </div>
+
+          <div class="admin-card" style="padding: 2rem; max-width: 680px;">
+            <form id="admin-settings-form">
+              <div class="form-group">
+                <label class="form-label" for="set-sitename">Community Portal Name</label>
+                <input type="text" id="set-sitename" class="form-input" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="set-focus">Current Technical Focus</label>
+                <input type="text" id="set-focus" class="form-input" />
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0;">
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                  <input type="checkbox" id="set-demo-mode" style="width: 18px; height: 18px;" />
+                  <div>
+                    <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">Demo Environment Mode</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Displays DEMO DATA indicators on sample projects and events.</div>
+                  </div>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                  <input type="checkbox" id="set-ai-assistant" style="width: 18px; height: 18px;" />
+                  <div>
+                    <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">Enable 'Ask SBG' AI Assistant</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Shows the floating conversational drawer on public pages.</div>
+                  </div>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;">
+                  <input type="checkbox" id="set-recruitment" style="width: 18px; height: 18px;" />
+                  <div>
+                    <div style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem;">Accepting New Recruits</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted);">Enables student application submissions.</div>
+                  </div>
+                </label>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--admin-border); padding-top: 1.5rem;">
+                <button type="button" id="admin-reset-seed-btn" class="btn btn-secondary" style="color: var(--admin-rose); border-color: rgba(244, 63, 94, 0.3);">
+                  <i data-lucide="rotate-ccw" style="width: 16px; height: 16px;"></i> Reset to Seed Data
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                  Save Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- ==========================================
+         04. CRUD MODALS
+         ========================================== -->
+
+    <!-- Add/Edit Project Modal -->
+    <div id="project-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 600px; padding: 2rem;">
+        <h3 id="project-modal-title" style="margin-bottom: 1.5rem;">Add New Demo Project</h3>
+        <form id="project-form">
+          <input type="hidden" id="proj-id" />
+          <div class="form-group">
+            <label class="form-label">Project Title</label>
+            <input type="text" id="proj-title" class="form-input" placeholder="e.g. Cloud Analytics Dashboard (Demo)" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="proj-category" class="form-select">
+              <option value="Cloud">Cloud</option>
+              <option value="AI">AI</option>
+              <option value="Web">Web</option>
+              <option value="Data">Data</option>
+              <option value="Open Source">Open Source</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tagline</label>
+            <input type="text" id="proj-tagline" class="form-input" placeholder="Short technical summary" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Summary</label>
+            <textarea id="proj-summary" class="form-textarea" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">AWS Services (comma separated)</label>
+            <input type="text" id="proj-services" class="form-input" placeholder="AWS Lambda, Amazon S3, DynamoDB" />
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add/Edit Event Modal -->
+    <div id="event-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 600px; padding: 2rem;">
+        <h3 id="event-modal-title" style="margin-bottom: 1.5rem;">Add New Event</h3>
+        <form id="event-form">
+          <input type="hidden" id="evt-id" />
+          <div class="form-group">
+            <label class="form-label">Event Title</label>
+            <input type="text" id="evt-title" class="form-input" placeholder="e.g. AWS Cloud Foundations Workshop (Demo)" required />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Type</label>
+              <select id="evt-type" class="form-select">
+                <option value="Workshop">Workshop</option>
+                <option value="Hands-on Lab">Hands-on Lab</option>
+                <option value="Hackathon">Hackathon</option>
+                <option value="Bootcamp">Bootcamp</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date</label>
+              <input type="date" id="evt-date" class="form-input" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Speaker Name (Demo)</label>
+            <input type="text" id="evt-speaker" class="form-input" placeholder="Guest Speaker (Demo)" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="evt-desc" class="form-textarea" rows="3" required></textarea>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Event</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add/Edit Member Modal -->
+    <div id="member-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 600px; padding: 2rem;">
+        <h3 id="member-modal-title" style="margin-bottom: 1.5rem;">Add Team Member (Demo)</h3>
+        <form id="member-form">
+          <input type="hidden" id="mem-id" />
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="mem-name" class="form-input" placeholder="e.g. Domain Lead — Cloud (Demo)" required />
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <input type="text" id="mem-role" class="form-input" placeholder="e.g. Domain Lead" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tier</label>
+              <select id="mem-tier" class="form-select">
+                <option value="Faculty Coordination">Faculty Coordination</option>
+                <option value="Team Leadership">Team Leadership</option>
+                <option value="Core Team">Core Team</option>
+                <option value="Domain Leads">Domain Leads</option>
+                <option value="Technical Team">Technical Team</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Domain</label>
+            <select id="mem-domain" class="form-select">
+              <option value="Cloud & DevOps">Cloud & DevOps</option>
+              <option value="AI & Machine Learning">AI & Machine Learning</option>
+              <option value="Data & Analytics">Data & Analytics</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="Open Source & Systems">Open Source & Systems</option>
+              <option value="UI/UX & Creative Technology">UI/UX & Creative Technology</option>
+              <option value="Community & DevRel">Community & DevRel</option>
+              <option value="Events & Operations">Events & Operations</option>
+            </select>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-secondary close-modal-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Member</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Admin Controller Script -->
+    <script type="module" src="/src/admin.js"></script>
+  </body>
+</html>
