@@ -1,0 +1,763 @@
+{
+  "settings": {
+    "siteName": "AWS Student Builder Group — VPKBIET",
+    "institution": "Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati",
+    "region": "Baramati, Maharashtra, India",
+    "demoMode": true,
+    "enableAiAssistant": true,
+    "recruitmentOpen": true,
+    "currentFocus": "AWS • CLOUD • AI • DATA • DEVOPS",
+    "communityStatus": "ACTIVE"
+  },
+  "domains": [
+    {
+      "id": "cloud-devops",
+      "name": "Cloud & DevOps",
+      "shortDesc": "Cloud-native architectures, infrastructure as code, serverless computing, and CI/CD automation.",
+      "technologies": [
+        "AWS Cloud",
+        "Docker",
+        "Terraform",
+        "AWS CDK",
+        "GitHub Actions",
+        "Lambda"
+      ],
+      "responsibilities": [
+        "Architecting resilient, cost-effective AWS infrastructure",
+        "Managing multi-environment deployment pipelines",
+        "Conducting cloud architecture reviews and Well-Architected labs"
+      ],
+      "leadPlaceholder": "Domain Lead — Cloud & DevOps",
+      "status": "Active Domain"
+    },
+    {
+      "id": "ai-ml",
+      "name": "AI & Machine Learning",
+      "shortDesc": "Generative AI applications, foundation models on Amazon Bedrock, and applied deep learning.",
+      "technologies": [
+        "Amazon Bedrock",
+        "SageMaker",
+        "Python",
+        "LangChain",
+        "Vector DBs",
+        "PyTorch"
+      ],
+      "responsibilities": [
+        "Prototyping generative AI applications with LLMs and RAG",
+        "Exploring computer vision and natural language processing models",
+        "Hosting AI hands-on hackathons and model tuning workshops"
+      ],
+      "leadPlaceholder": "Domain Lead — AI & ML",
+      "status": "Active Domain"
+    },
+    {
+      "id": "data-analytics",
+      "name": "Data & Analytics",
+      "shortDesc": "Modern data pipelines, stream processing, data warehousing, and telemetry visualization.",
+      "technologies": [
+        "Amazon Athena",
+        "AWS Glue",
+        "Kinesis",
+        "PostgreSQL",
+        "Amazon QuickSight"
+      ],
+      "responsibilities": [
+        "Designing scalable data ingestion pipelines",
+        "Managing analytical datasets and cloud queries",
+        "Building real-time telemetry dashboards"
+      ],
+      "leadPlaceholder": "Domain Lead — Data & Analytics",
+      "status": "Active Domain"
+    },
+    {
+      "id": "software-engineering",
+      "name": "Software Engineering",
+      "shortDesc": "Full-stack web applications, microservices, distributed systems, and API design.",
+      "technologies": [
+        "TypeScript",
+        "Next.js",
+        "Node.js",
+        "AWS AppSync",
+        "GraphQL",
+        "DynamoDB"
+      ],
+      "responsibilities": [
+        "Building robust community web platforms and tools",
+        "Developing event-driven microservices",
+        "Maintaining technical documentation and code standards"
+      ],
+      "leadPlaceholder": "Domain Lead — Software Engineering",
+      "status": "Active Domain"
+    },
+    {
+      "id": "open-source",
+      "name": "Open Source & Systems",
+      "shortDesc": "Open-source development, community toolkits, starter templates, and Linux systems.",
+      "technologies": [
+        "Git",
+        "Linux",
+        "Rust",
+        "Go",
+        "OpenSSF",
+        "Markdown"
+      ],
+      "responsibilities": [
+        "Maintaining official community open-source repositories",
+        "Guiding students through their first pull requests",
+        "Promoting open collaboration and permissive licensing"
+      ],
+      "leadPlaceholder": "Domain Lead — Open Source",
+      "status": "Active Domain"
+    },
+    {
+      "id": "ui-ux",
+      "name": "UI/UX & Creative Tech",
+      "shortDesc": "Design systems, accessible interfaces, human-computer interaction, and technical branding.",
+      "technologies": [
+        "Figma",
+        "Design Tokens",
+        "CSS3 / Canvas",
+        "Three.js",
+        "Tailwind",
+        "Motion"
+      ],
+      "responsibilities": [
+        "Designing intuitive user experiences and design systems",
+        "Creating interactive data visualizations and diagrams",
+        "Ensuring high accessibility and responsive visual consistency"
+      ],
+      "leadPlaceholder": "Domain Lead — UI/UX",
+      "status": "Active Domain"
+    },
+    {
+      "id": "community-devrel",
+      "name": "Community & DevRel",
+      "shortDesc": "Developer advocacy, technical writing, workshop facilitation, and student outreach.",
+      "technologies": [
+        "Technical Writing",
+        "Public Speaking",
+        "Community Ops",
+        "Discord",
+        "Dev.to"
+      ],
+      "responsibilities": [
+        "Organizing technical talks and industry speaker sessions",
+        "Writing tutorials and workshop documentation",
+        "Engaging new student builders and fostering inclusion"
+      ],
+      "leadPlaceholder": "Domain Lead — Community & DevRel",
+      "status": "Active Domain"
+    },
+    {
+      "id": "events-operations",
+      "name": "Events & Operations",
+      "shortDesc": "Hackathon logistics, venue coordination, timeline management, and builder onboarding.",
+      "technologies": [
+        "Agile Planning",
+        "Event Tooling",
+        "Notion",
+        "Logistics",
+        "Operations"
+      ],
+      "responsibilities": [
+        "Planning end-to-end event execution and participant support",
+        "Managing student hackathon logistics and schedules",
+        "Coordinating institutional facilities and certifications"
+      ],
+      "leadPlaceholder": "Domain Lead — Events & Operations",
+      "status": "Active Domain"
+    }
+  ],
+  "projects": [
+    {
+      "id": "econutri-ai",
+      "title": "EcoNutri AI",
+      "category": "Cloud & AI",
+      "tagline": "Cloud-Native Precision Agriculture & Soil Nutrient Diagnostics",
+      "summary": "Solar-powered IoT sensors deployed across Baramati agricultural fields transmit real-time N-P-K soil metrics. An AWS serverless pipeline analyzes nutrient deficiency and generates hyper-localized Marathi/English fertilizer schedules via Amazon Bedrock.",
+      "isDemo": true,
+      "featured": true,
+      "badge": "Regional Impact",
+      "badgeType": "eco",
+      "status": "Production Pilot",
+      "year": "2026",
+      "metrics": [
+        { "label": "Fertilizer Waste Cut", "val": "22%" },
+        { "label": "Active Baramati Farms", "val": "45+" },
+        { "label": "Diagnostic Latency", "val": "<1.2s" }
+      ],
+      "technologies": ["ESP32 IoT", "Python", "Amazon Bedrock", "AWS Lambda", "DynamoDB"],
+      "awsServices": ["AWS IoT Core", "AWS Lambda", "Amazon DynamoDB", "Amazon Bedrock", "Amazon SNS"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/econutri-ai",
+      "demoUrl": "https://econutri.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "IoT Field Sensors", "desc": "Solar ESP32 nodes sample soil moisture, pH, and N-P-K in Baramati sugarcane & grape fields." },
+          { "title": "AWS IoT Core", "desc": "Secure MQTT ingestion channel with mutual X.509 device certificates and topic rule routing." },
+          { "title": "AWS Lambda & DynamoDB", "desc": "Serverless validation, time-series telemetry logging, and threshold anomaly detection." },
+          { "title": "Amazon Bedrock (Claude 3.5)", "desc": "Generative AI agronomist agent synthesizes soil data into conversational Marathi advisories." },
+          { "title": "Amazon SNS & WhatsApp Gateway", "desc": "Automated SMS/WhatsApp alerts delivered straight to the farmer's mobile handset." }
+        ]
+      },
+      "team": ["Omkar S. Deshmukh (Lead Architect)", "Pooja N. Jagtap (IoT Systems)", "Sanket M. Ghadge (Cloud Ops)"]
+    },
+    {
+      "id": "skipshop-ai",
+      "title": "SkipShop AI",
+      "category": "AI & ML",
+      "tagline": "Edge Computer Vision & Serverless Autonomous Retail Checkout",
+      "summary": "Frictionless checkout experience tailored for local grocery stores and college campus marts. Edge cameras track items with computer vision, synchronizing with AWS AppSync GraphQL for instant queue-free payment.",
+      "isDemo": true,
+      "featured": true,
+      "badge": "Flagship Demo",
+      "badgeType": "aws-orange",
+      "status": "Live Campus Pilot",
+      "year": "2026",
+      "metrics": [
+        { "label": "Queue Time Cut", "val": "78%" },
+        { "label": "Checkout Speed", "val": "4.5s" },
+        { "label": "Item Accuracy", "val": "99.2%" }
+      ],
+      "technologies": ["PyTorch", "AWS AppSync", "GraphQL", "DynamoDB", "Edge CV"],
+      "awsServices": ["Amazon Rekognition", "AWS AppSync", "AWS Lambda", "Amazon DynamoDB", "Amazon S3"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/skipshop-ai",
+      "demoUrl": "https://skipshop.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "Edge Camera Stream", "desc": "Dual overhead high-fps RTSP cameras capture shopper basket item selection." },
+          { "title": "Amazon Rekognition & SageMaker", "desc": "Real-time object classification and bounding-box matching with campus retail SKUs." },
+          { "title": "AWS AppSync (GraphQL)", "desc": "Bi-directional WebSocket connection pushing live cart line items to the student's phone." },
+          { "title": "DynamoDB & UPI Lambda", "desc": "Atomic balance ledger updates and serverless payment webhooks." }
+        ]
+      },
+      "team": ["Omkar S. Deshmukh (Lead Architect)", "Aditya K. Shinde (Computer Vision)", "Neha R. Patil (Full Stack)"]
+    },
+    {
+      "id": "skipline-go",
+      "title": "Skipline Go",
+      "category": "Cloud",
+      "tagline": "Event-Driven Campus Dining Queue & Pre-Ordering Engine",
+      "summary": "Built for the VPKBIET campus cafeteria to eliminate peak lunch rushes. Students pre-order and receive real-time prep status with serverless WebSocket broadcasts via AWS API Gateway and Amazon EventBridge.",
+      "isDemo": true,
+      "featured": true,
+      "badge": "Campus Live",
+      "badgeType": "aws-blue",
+      "status": "Deployed",
+      "year": "2026",
+      "metrics": [
+        { "label": "Daily Campus Orders", "val": "650+" },
+        { "label": "Average Wait Time", "val": "2 mins" },
+        { "label": "Zero Server Downtime", "val": "99.99%" }
+      ],
+      "technologies": ["Next.js PWA", "EventBridge", "AWS Lambda", "DynamoDB Streams", "TailwindCSS"],
+      "awsServices": ["AWS API Gateway", "Amazon EventBridge", "AWS Lambda", "Amazon DynamoDB", "Amazon CloudWatch"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/skipline-go",
+      "demoUrl": "https://skipline.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "Next.js PWA Client", "desc": "Progressive Web App with offline menu caching and instant biometric student login." },
+          { "title": "WebSocket API Gateway", "desc": "Persistent two-way connection for real-time kitchen order ticketing." },
+          { "title": "Amazon EventBridge", "desc": "Decoupled choreography routing orders from kitchen prep -> packing -> collection." },
+          { "title": "DynamoDB Streams", "desc": "Change data capture triggering instant push notifications upon order ready." }
+        ]
+      },
+      "team": ["Neha R. Patil (Backend Lead)", "Omkar S. Deshmukh (Systems Advisor)", "Tanvi V. Joshi (UI/UX)"]
+    },
+    {
+      "id": "cloudguard-sentinel",
+      "title": "CloudGuard Sentinel",
+      "category": "Cloud & DevOps",
+      "tagline": "Automated AWS Free-Tier Cost Anomaly & Compliance Hunter",
+      "summary": "A student-designed AWS Lambda utility that audits student AWS accounts for orphaned EBS volumes, idle NAT gateways, and unencrypted S3 buckets, preventing surprise cloud bills.",
+      "isDemo": true,
+      "featured": true,
+      "badge": "Security & FinOps",
+      "badgeType": "aws-orange",
+      "status": "Production Tool",
+      "year": "2026",
+      "metrics": [
+        { "label": "Credits Saved", "val": "$3,400+" },
+        { "label": "Audited Accounts", "val": "85+" },
+        { "label": "Compliance Score", "val": "96%" }
+      ],
+      "technologies": ["Python", "AWS SDK (Boto3)", "CloudWatch Events", "Discord API"],
+      "awsServices": ["AWS Cost Explorer API", "AWS Lambda", "Amazon SNS", "Amazon CloudWatch", "AWS IAM"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/cloudguard-sentinel",
+      "demoUrl": "https://github.com/aws-sbg-vpkbiet/cloudguard-sentinel",
+      "architecture": {
+        "steps": [
+          { "title": "Daily CloudWatch Cron", "desc": "Scheduled event triggers multi-region scanner Lambda function across ap-south-1." },
+          { "title": "Cost & Resource APIs", "desc": "Queries AWS Cost Explorer, EC2, and S3 APIs across student development accounts." },
+          { "title": "Heuristic Anomaly Engine", "desc": "Detects unattached volumes, idle load balancers, and public bucket ACLs." },
+          { "title": "Discord Webhook Bot", "desc": "Sends instant remediation alerts and cost forecasts to project Discord channels." }
+        ]
+      },
+      "team": ["Prashant B. Thorat (Cloud Security)", "Pooja N. Jagtap (DevOps Lead)", "Omkar S. Deshmukh (Mentor)"]
+    },
+    {
+      "id": "campusgrid-iot",
+      "title": "CampusGrid Smart Energy",
+      "category": "Data & IoT",
+      "tagline": "VPKBIET Green Campus Micro-Grid Analytics",
+      "summary": "Real-time energy telemetry across VPKBIET academic buildings. Visualizes solar generation and HVAC load to reduce peak institutional electricity tariffs.",
+      "isDemo": true,
+      "featured": false,
+      "badge": "Eco-Tech",
+      "badgeType": "eco",
+      "status": "Live Campus Pilot",
+      "year": "2026",
+      "metrics": [
+        { "label": "Solar Tracked", "val": "450 kWh/d" },
+        { "label": "Peak Load Cut", "val": "14%" },
+        { "label": "Live Sub-Meters", "val": "28 Nodes" }
+      ],
+      "technologies": ["Modbus RTU", "AWS IoT Greengrass", "Amazon Timestream", "QuickSight"],
+      "awsServices": ["AWS IoT Greengrass", "Amazon Timestream", "Amazon QuickSight", "AWS Lambda"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/campusgrid-iot",
+      "demoUrl": "https://campusgrid.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "Smart Energy Meters", "desc": "Modbus RTU electricity meters in academic buildings 1, 2, and 3." },
+          { "title": "AWS IoT Greengrass", "desc": "Campus edge gateway aggregating high-frequency current and voltage signals." },
+          { "title": "Amazon Timestream", "desc": "Purpose-built time-series database ingesting 100,000 metrics daily." },
+          { "title": "Amazon QuickSight", "desc": "Executive dashboards visualizing live grid balance for faculty administration." }
+        ]
+      },
+      "team": ["Sanket M. Ghadge (Data Lead)", "Pooja N. Jagtap (IoT Systems)", "Omkar S. Deshmukh (Architecture)"]
+    },
+    {
+      "id": "pulsemed-ai",
+      "title": "PulseMed AI",
+      "category": "AI & ML",
+      "tagline": "Multilingual Clinical Triage Assistant for Rural Clinics",
+      "summary": "Built for primary healthcare sub-centers in rural Pune. Uses Amazon Transcribe Medical and Bedrock to translate local Marathi voice symptom descriptions into structured clinical summaries.",
+      "isDemo": true,
+      "featured": false,
+      "badge": "Healthcare",
+      "badgeType": "aws-blue",
+      "status": "Clinical Pilot",
+      "year": "2026",
+      "metrics": [
+        { "label": "Voice Translation", "val": "94.8%" },
+        { "label": "Triage Time Saved", "val": "6 mins/pt" },
+        { "label": "Rural Clinics", "val": "8 Piloting" }
+      ],
+      "technologies": ["Amazon Bedrock", "Amazon Transcribe", "Python", "Step Functions", "FastAPI"],
+      "awsServices": ["Amazon Bedrock", "Amazon Transcribe", "Amazon S3", "AWS Step Functions"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/pulsemed-ai",
+      "demoUrl": "https://pulsemed.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "Mobile Audio Capture", "desc": "Doctor or health worker records voice note in Marathi/Hindi dialect." },
+          { "title": "Amazon Transcribe", "desc": "Converts speech-to-text with specialized Indian regional phonetic models." },
+          { "title": "AWS Step Functions", "desc": "Orchestrates clinical entity extraction and symptom severity classification." },
+          { "title": "Amazon Bedrock LLM", "desc": "Formats symptoms into ICD-10 medical summary for referral hospitals." }
+        ]
+      },
+      "team": ["Omkar S. Deshmukh (Lead Architect)", "Aditya K. Shinde (AI/NLP)", "Kavita D. Salunkhe (Operations)"]
+    },
+    {
+      "id": "cloudforge-cdk",
+      "title": "CloudForge CDK",
+      "category": "Open Source",
+      "tagline": "Production-Ready AWS CDK v2 Infrastructure Templates for Students",
+      "summary": "A curated open-source collection of reusable AWS CDK v2 constructs tailored for collegiate hackathons and student capstones: Serverless microservices, VPC peering, Aurora Serverless, and Bedrock RAG pipelines with one-command deployments.",
+      "isDemo": true,
+      "featured": false,
+      "badge": "Open Source",
+      "badgeType": "aws-orange",
+      "status": "v1.4 Released",
+      "year": "2026",
+      "metrics": [
+        { "label": "GitHub Stars", "val": "180+" },
+        { "label": "Verified Blueprints", "val": "12" },
+        { "label": "Student Deployments", "val": "420+" }
+      ],
+      "technologies": ["AWS CDK v2", "TypeScript", "Jest", "GitHub Actions", "CloudFormation"],
+      "awsServices": ["AWS CloudFormation", "AWS CodePipeline", "Amazon S3", "AWS IAM", "Amazon Route 53"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/cloudforge-cdk",
+      "demoUrl": "https://cdk.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "CLI Starter Tool", "desc": "npx create-cloudforge-app bootstraps multi-stack CDK projects in seconds." },
+          { "title": "Stack Synthesis", "desc": "Synthesizes secure AWS CloudFormation templates with built-in cdk-nag security audits." },
+          { "title": "Automated CI/CD", "desc": "GitHub Actions workflow deploys into ephemeral preview environments." }
+        ]
+      },
+      "team": ["Pooja N. Jagtap (DevOps Lead)", "Omkar S. Deshmukh (Architect)", "Prashant B. Thorat (DevRel)"]
+    },
+    {
+      "id": "bedrock-campus-rag",
+      "title": "Bedrock Campus RAG",
+      "category": "AI & ML",
+      "tagline": "Student Academic Handbook & Cloud Curriculum AI Knowledge Engine",
+      "summary": "Indexes VPKBIET academic regulations, course syllabi, and official AWS documentation into Amazon OpenSearch Serverless. Powers student inquiry with citation-grounded answers via Claude 3.5 Sonnet.",
+      "isDemo": true,
+      "featured": false,
+      "badge": "GenAI Pilot",
+      "badgeType": "aws-blue",
+      "status": "Beta Testing",
+      "year": "2026",
+      "metrics": [
+        { "label": "Queries Answered", "val": "2,400+" },
+        { "label": "Citation Accuracy", "val": "98.5%" },
+        { "label": "Retrieval Latency", "val": "850ms" }
+      ],
+      "technologies": ["Amazon Bedrock", "OpenSearch Serverless", "LangChain", "FastAPI", "React"],
+      "awsServices": ["Amazon Bedrock", "Amazon OpenSearch Serverless", "AWS Lambda", "Amazon S3"],
+      "githubUrl": "https://github.com/aws-sbg-vpkbiet/bedrock-campus-rag",
+      "demoUrl": "https://rag.vpkbiet.ac.in",
+      "architecture": {
+        "steps": [
+          { "title": "Document Parsing", "desc": "S3 ingestion bucket triggers Lambda text extraction and chunking." },
+          { "title": "Titan Multimodal Embeddings", "desc": "Amazon Titan Embeddings models generate 1536-dim semantic vectors." },
+          { "title": "OpenSearch Vector Search", "desc": "k-NN approximate nearest neighbor retrieval pulls top 5 relevant document chunks." },
+          { "title": "Claude 3.5 Synthesis", "desc": "Amazon Bedrock synthesizes strict grounded responses with source citations." }
+        ]
+      },
+      "team": ["Aditya K. Shinde (AI Lead)", "Omkar S. Deshmukh (Architect)", "Neha R. Patil (Full Stack)"]
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-1788543593892",
+      "title": "fe",
+      "type": "Hackathon",
+      "category": "Cloud",
+      "date": "2026-09-02",
+      "time": "10:00 AM – 01:00 PM IST",
+      "venue": "VPKBIET Campus / Virtual Stream",
+      "speaker": "fsdf",
+      "speakerBio": "Cloud Practitioner",
+      "description": "sdf",
+      "isDemo": true,
+      "featured": false,
+      "status": "Upcoming",
+      "capacity": "100 Seats",
+      "agenda": [
+        "Session overview",
+        "Hands-on coding lab",
+        "Q&A"
+      ],
+      "prerequisites": "Laptop with browser.",
+      "registrationUrl": "#recruitments"
+    },
+    {
+      "id": "evt-aws-foundations",
+      "title": "AWS Cloud Foundations Workshop (Demo)",
+      "type": "Workshop",
+      "category": "Cloud",
+      "date": "2026-10-10",
+      "time": "10:00 AM – 02:00 PM IST",
+      "venue": "VPKBIET Computing Lab & Virtual Stream",
+      "speaker": "Guest Cloud Architect (Demo Speaker)",
+      "speakerBio": "Senior Solutions Architect & AWS Community Supporter",
+      "description": "A hands-on introductory workshop covering the AWS Global Infrastructure, core compute (EC2, Lambda), storage (S3), and security best practices (IAM, MFA).",
+      "isDemo": true,
+      "featured": true,
+      "status": "Upcoming",
+      "capacity": "120 Seats",
+      "agenda": [
+        "10:00 AM — Welcome Keynote & Cloud Fundamentals",
+        "11:15 AM — Hands-on Lab: Launching your first EC2 & S3 bucket",
+        "01:00 PM — IAM Least-Privilege & Cost Control Strategies",
+        "01:45 PM — Q&A & Resource Distribution"
+      ],
+      "prerequisites": "Laptop with web browser; no prior AWS account required (sandbox provided).",
+      "registrationUrl": "#recruitments"
+    },
+    {
+      "id": "evt-serverless-lab",
+      "title": "Serverless Architecture Hands-on Lab (Demo)",
+      "type": "Hands-on Lab",
+      "category": "Serverless",
+      "date": "2026-10-24",
+      "time": "02:00 PM – 05:30 PM IST",
+      "venue": "Online Interactive Session (Discord)",
+      "speaker": "Student Tech Lead (Demo Speaker)",
+      "speakerBio": "Cloud & Distributed Systems Enthusiast at VPKBIET",
+      "description": "Construct an event-driven RESTful API from scratch using AWS Lambda, Amazon API Gateway, and DynamoDB single-table design.",
+      "isDemo": true,
+      "featured": true,
+      "status": "Upcoming",
+      "capacity": "150 Seats",
+      "agenda": [
+        "02:00 PM — Monolith to Microservices Paradigm",
+        "02:45 PM — Live Coding: Lambda function handlers with Node.js",
+        "04:15 PM — Connecting DynamoDB & API Gateway routes",
+        "05:00 PM — Testing with Postman & Deploying with AWS CDK"
+      ],
+      "prerequisites": "Basic familiarity with JavaScript/Python and command-line interfaces.",
+      "registrationUrl": "#recruitments"
+    },
+    {
+      "id": "evt-buildon-ai",
+      "title": "Build with Generative AI & Amazon Bedrock (Demo)",
+      "type": "Hackathon",
+      "category": "AI",
+      "date": "2026-11-14",
+      "time": "09:00 AM – 06:00 PM IST",
+      "venue": "VPKBIET Main Auditorium",
+      "speaker": "AI Domain Team (Demo Facilitators)",
+      "speakerBio": "VPKBIET Student Builders specializing in GenAI & NLP",
+      "description": "A day-long builder sprint exploring foundation models on Amazon Bedrock. Teams prototype practical tools integrating RAG, prompt engineering, and conversational AI.",
+      "isDemo": true,
+      "featured": true,
+      "status": "Upcoming",
+      "capacity": "30 Teams",
+      "agenda": [
+      "09:00 AM — Bedrock API Overview & Model Access",
+        "10:00 AM — Hackathon Kickoff & Problem Statement Release",
+        "03:30 PM — Mentor Checkpoints & Architecture Reviews",
+        "05:00 PM — Live Team Demonstrations & Feedback"
+      ],
+      "prerequisites": "Team of 2–4 students with interest in AI, web development, or cloud architecture.",
+      "registrationUrl": "#recruitments"
+    }
+  ],
+  "members": [
+    {
+      "id": "mem-faculty-advisor",
+      "name": "Dr. Sachin S. Patil",
+      "role": "Faculty Advisor & Institutional Mentor",
+      "tier": "Faculty Coordination",
+      "domain": "Advisory & Institutional",
+      "bio": "Guiding AWS SBG VPKBIET student builders with academic alignment, cloud curriculum integration, and institutional infrastructure support. Passionate about distributed systems and cloud research.",
+      "branch": "Department of Computer Engineering",
+      "year": "Faculty / Associate Professor",
+      "certifications": ["AWS Academy Accredited Educator", "PhD in Distributed Cloud Systems"],
+      "avatarColor": "#FF9900",
+      "skills": ["Distributed Systems", "Cloud Governance", "Research Guidance", "Academic Mentorship"],
+      "github": "https://github.com/vpkbiet-cloud",
+      "linkedin": "https://linkedin.com/in/dr-sachin-patil-vpkbiet",
+      "isDemo": true
+    },
+    {
+      "id": "mem-omkar-deshmukh",
+      "name": "Omkar S. Deshmukh",
+      "role": "Student Community Lead & Cloud Architect",
+      "tier": "Team Leadership",
+      "domain": "Executive & Architecture",
+      "bio": "Full-stack cloud engineer and AI/ML builder coordinating technical roadmaps, hands-on AWS bootcamps, and regional open-source initiatives. Architect of EcoNutri AI and SkipShop AI.",
+      "branch": "Computer Engineering",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified Solutions Architect – Associate", "AWS Certified AI Practitioner"],
+      "avatarColor": "#FF9900",
+      "skills": ["AWS Cloud Architecture", "Amazon Bedrock", "Full-Stack Web", "Serverless", "Technical Leadership"],
+      "github": "https://github.com/omkar-deshmukh-builder",
+      "linkedin": "https://linkedin.com/in/omkar-deshmukh-cloud",
+      "isDemo": true
+    },
+    {
+      "id": "mem-pooja-jagtap",
+      "name": "Pooja N. Jagtap",
+      "role": "Cloud & DevOps Lead",
+      "tier": "Domain Leads",
+      "domain": "Cloud & DevOps",
+      "bio": "Specializes in Infrastructure as Code with AWS CDK and Terraform, multi-stage CI/CD deployment pipelines, Docker containerization, and AWS serverless architectures.",
+      "branch": "Computer Engineering",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified Solutions Architect – Associate", "Docker Certified"],
+      "avatarColor": "#00A4E4",
+      "skills": ["AWS CDK v2", "Terraform", "Docker", "AWS Lambda", "GitHub Actions", "Amazon ECS"],
+      "github": "https://github.com/pooja-jagtap-devops",
+      "linkedin": "https://linkedin.com/in/pooja-jagtap-cloud",
+      "isDemo": true
+    },
+    {
+      "id": "mem-aditya-shinde",
+      "name": "Aditya K. Shinde",
+      "role": "AI & Machine Learning Lead",
+      "tier": "Domain Leads",
+      "domain": "AI & Machine Learning",
+      "bio": "Directs student AI hackathons, foundation model orchestration on Amazon Bedrock, RAG architectures with vector databases, and edge computer-vision models.",
+      "branch": "AI & Data Science",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified AI Practitioner", "PyTorch Specialist"],
+      "avatarColor": "#8B5CF6",
+      "skills": ["Amazon Bedrock", "Python", "LangChain", "OpenSearch Vector DB", "Computer Vision", "PyTorch"],
+      "github": "https://github.com/aditya-shinde-ai",
+      "linkedin": "https://linkedin.com/in/aditya-shinde-aiml",
+      "isDemo": true
+    },
+    {
+      "id": "mem-neha-patil",
+      "name": "Neha R. Patil",
+      "role": "Software Engineering Lead",
+      "tier": "Domain Leads",
+      "domain": "Software Engineering",
+      "bio": "Full-stack developer architecting reactive web applications, GraphQL interfaces with AWS AppSync, DynamoDB single-table designs, and microservices backends.",
+      "branch": "Information Technology",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified Developer – Associate (In Prep)"],
+      "avatarColor": "#06B6D4",
+      "skills": ["Next.js / React", "TypeScript", "AWS AppSync", "Amazon DynamoDB", "REST APIs", "Node.js"],
+      "github": "https://github.com/neha-patil-code",
+      "linkedin": "https://linkedin.com/in/neha-patil-swe",
+      "isDemo": true
+    },
+    {
+      "id": "mem-tanvi-joshi",
+      "name": "Tanvi V. Joshi",
+      "role": "Creative Tech & UI/UX Lead",
+      "tier": "Domain Leads",
+      "domain": "UI/UX & Creative Tech",
+      "bio": "Crafting premium design systems, accessible developer console interfaces, 3D WebGL user interactions, and visual brand identity for AWS SBG VPKBIET.",
+      "branch": "Computer Engineering",
+      "year": "SE (Second Year)",
+      "certifications": ["Google UX Design Professional"],
+      "avatarColor": "#EC4899",
+      "skills": ["Figma Design Systems", "Three.js / WebGL", "Vanilla CSS", "Wireframing", "Motion Design"],
+      "github": "https://github.com/tanvi-joshi-ui",
+      "linkedin": "https://linkedin.com/in/tanvi-joshi-design",
+      "isDemo": true
+    },
+    {
+      "id": "mem-sanket-ghadge",
+      "name": "Sanket M. Ghadge",
+      "role": "Data & Telemetry Lead",
+      "tier": "Domain Leads",
+      "domain": "Data & Analytics",
+      "bio": "Architecting real-time streaming telemetry pipelines with AWS IoT Greengrass, Amazon Timestream, Glue ETL, and interactive Amazon QuickSight executive dashboards.",
+      "branch": "Computer Engineering",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified Data Analytics (In Prep)"],
+      "avatarColor": "#06B6D4",
+      "skills": ["Amazon Athena", "AWS Glue", "Amazon Timestream", "QuickSight", "Python", "SQL Data Warehousing"],
+      "github": "https://github.com/sanket-ghadge-data",
+      "linkedin": "https://linkedin.com/in/sanket-ghadge-data",
+      "isDemo": true
+    },
+    {
+      "id": "mem-prashant-thorat",
+      "name": "Prashant B. Thorat",
+      "role": "Cloud Security & DevRel Lead",
+      "tier": "Domain Leads",
+      "domain": "Community & DevRel",
+      "bio": "DevRel speaker and cloud security enthusiast. Focuses on IAM least-privilege policies, CloudWatch anomaly alerting, student workshop instruction, and open-source advocacy.",
+      "branch": "Computer Engineering",
+      "year": "TE (Third Year)",
+      "certifications": ["AWS Certified Cloud Practitioner", "HashiCorp Terraform Associate"],
+      "avatarColor": "#10B981",
+      "skills": ["Cloud Security", "AWS IAM", "Technical Writing", "Public Speaking", "Community Outreach"],
+      "github": "https://github.com/prashant-thorat-cloud",
+      "linkedin": "https://linkedin.com/in/prashant-thorat-devrel",
+      "isDemo": true
+    },
+    {
+      "id": "mem-kavita-salunkhe",
+      "name": "Kavita D. Salunkhe",
+      "role": "Events & Operations Lead",
+      "tier": "Domain Leads",
+      "domain": "Events & Operations",
+      "bio": "Managing student hackathon logistics, certification study groups, community Discord engagement, and technical workshop execution across VPKBIET departments.",
+      "branch": "Computer Engineering",
+      "year": "SE (Second Year)",
+      "certifications": ["AWS Skill Builder Active Participant"],
+      "avatarColor": "#F59E0B",
+      "skills": ["Event Management", "Agile Coordination", "Community Engagement", "Operations", "Notion"],
+      "github": "https://github.com/kavita-salunkhe-ops",
+      "linkedin": "https://linkedin.com/in/kavita-salunkhe-community",
+      "isDemo": true
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-1",
+      "title": "Cloud Architecture Workshop (Sample)",
+      "category": "Workshops",
+      "date": "October 2026",
+      "caption": "Students collaborating on cloud architecture diagrams and serverless APIs.",
+      "imageUrl": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+      "isDemo": true
+    },
+    {
+      "id": "gal-2",
+      "title": "Hands-on Terminal Coding Session (Sample)",
+      "category": "Hands-on",
+      "date": "October 2026",
+      "caption": "Pair programming and infrastructure deployment via AWS CloudShell.",
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+      "isDemo": true
+    },
+    {
+      "id": "gal-3",
+      "title": "Bedrock Hackathon Sprint (Sample)",
+      "category": "Hackathons",
+      "date": "November 2026",
+      "caption": "Teams prototyping generative AI applications using foundation models.",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+      "isDemo": true
+    },
+    {
+      "id": "gal-4",
+      "title": "Student Builders Design Review (Sample)",
+      "category": "Team",
+      "date": "November 2026",
+      "caption": "Domain leads reviewing component systems and accessibility guidelines.",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+      "isDemo": true
+    }
+  ],
+  "recruitments": [
+    {
+      "id": "app-7587",
+      "name": "Test Candidate",
+      "email": "candidate.test@vpkbiet.ac.in",
+      "prn": "72219999X",
+      "branch": "Computer Engineering",
+      "year": "TE",
+      "domain": "Cloud & DevOps",
+      "skills": "AWS, Docker, Linux",
+      "github": "",
+      "linkedin": "",
+      "portfolio": "",
+      "pitch": "Excited to contribute to student cloud projects!",
+      "status": "Under Review",
+      "createdAt": "2026-09-04T16:39:37.587Z"
+    },
+    {
+      "id": "app-001",
+      "name": "Sample Candidate A",
+      "email": "candidate.a@vpkbiet.ac.in",
+      "prn": "72210001A",
+      "branch": "Computer Engineering",
+      "year": "TE",
+      "domain": "Cloud & DevOps",
+      "skills": "Docker, Linux CLI, Python, AWS Free Tier basics",
+      "github": "https://github.com/candidate-a",
+      "linkedin": "https://linkedin.com/in/candidate-a",
+      "portfolio": "https://candidate-a.dev",
+      "pitch": "I want to gain hands-on experience deploying containerized microservices and automated CI/CD pipelines.",
+      "status": "Under Review",
+      "createdAt": "2026-09-04T12:00:00.000Z"
+    },
+    {
+      "id": "app-002",
+      "name": "Sample Candidate B",
+      "email": "candidate.b@vpkbiet.ac.in",
+      "prn": "72210002B",
+      "branch": "AI & Data Science",
+      "year": "SE",
+      "domain": "AI & Machine Learning",
+      "skills": "Python, PyTorch, LangChain, REST APIs",
+      "github": "https://github.com/candidate-b",
+      "linkedin": "https://linkedin.com/in/candidate-b",
+      "portfolio": "",
+      "pitch": "Excited to build practical RAG applications on Amazon Bedrock and contribute to community projects.",
+      "status": "Shortlisted",
+      "createdAt": "2026-09-04T14:30:00.000Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-001",
+      "name": "Visiting Student",
+      "email": "student.visitor@vpkbiet.ac.in",
+      "subject": "Inquiry regarding upcoming AWS certification workshops",
+      "message": "Hello SBG Team, will the upcoming bootcamp provide practice exam materials or study vouchers? Thanks!",
+      "isRead": false,
+      "createdAt": "2026-09-04T15:00:00.000Z"
+    }
+  ]
+}

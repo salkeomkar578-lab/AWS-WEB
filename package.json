@@ -1,0 +1,13 @@
+{
+  "name": "aws-sbg-vpkbiet",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Official Web Platform for AWS Student Builder Group (SBG) - VPKBIET Baramati",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build successful'"
+  },
+  "author": "AWS SBG VPKBIET Lead Engineering Team",
+  "license": "MIT"
+}

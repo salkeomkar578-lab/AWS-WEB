@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Official website of AWS Student Builder Group (SBG) at VPKBIET, Baramati. A student-led technology community building with AWS, cloud computing, AI, and modern software engineering." />
+    <meta name="keywords" content="AWS SBG, VPKBIET, Baramati, AWS Student Builder Group, Cloud, DevOps, Bedrock, Serverless, Student Developers" />
+    <title>AWS Student Builder Group | VPKBIET Baramati</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Primary Stylesheet -->
+    <link rel="stylesheet" href="/src/index.css" />
+  </head>
+  <body>
+    <!-- Background Fixed 3D Canvas across the entire page -->
+    <canvas id="hero-three-canvas"></canvas>
+
+    <!-- Cyberpunk Perspective Neon Grid Horizon -->
+    <div class="cyber-grid-horizon" aria-hidden="true"></div>
+
+    <!-- ==========================================
+         01. TOP NAVIGATION BAR
+         ========================================== -->
+    <header class="aws-navbar" id="main-navbar">
+      <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+        <!-- Brand Logo -->
+        <a href="#overview" style="display: flex; align-items: center; gap: 0.65rem; text-decoration: none;">
+          <div style="width: 36px; height: 36px; border-radius: 10px; background: var(--bg-surface); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center;">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+              <path d="M7 16L12 11L17 16L12 21L7 16Z" fill="#00A4E4"/>
+              <path d="M15 16L20 11L25 16L20 21L15 16Z" fill="#FF9900"/>
+              <path d="M10 23C13.5 25 18.5 25 22 23" stroke="#FF9900" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <div style="font-weight: 800; font-family: var(--font-display); font-size: 1rem; letter-spacing: -0.01em; color: var(--text-primary);">
+              AWS SBG <span style="color: var(--aws-smile-orange);">VPKBIET</span>
+            </div>
+            <div style="font-size: 0.62rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 0.06em;">
+              STUDENT BUILDER GROUP
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+          <a href="#overview" class="nav-link active">Home<span class="nav-dot"></span></a>
+          <a href="#about" class="nav-link">About<span class="nav-dot"></span></a>
+          <a href="#domains" class="nav-link">Domains<span class="nav-dot"></span></a>
+          <a href="#projects" class="nav-link">Projects<span class="nav-dot"></span></a>
+          <a href="#events" class="nav-link">Events<span class="nav-dot"></span></a>
+          <a href="#team" class="nav-link">Team<span class="nav-dot"></span></a>
+          <a href="#gallery" class="nav-link">Gallery<span class="nav-dot"></span></a>
+          <a href="#recruitments" class="nav-link">Join Us<span class="nav-dot"></span></a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <button id="command-palette-trigger" class="btn-ghost icon-btn" title="Command Palette (Cmd/Ctrl + K)">
+            <i data-lucide="search" style="width: 17px; height: 17px;"></i>
+          </button>
+
+          <a href="/admin" class="btn btn-ghost" style="padding: 0.4rem 0.7rem; font-size: 0.78rem; border: 1px solid var(--border-subtle); border-radius: 8px;" title="Access Admin Console">
+            <i data-lucide="shield" style="width: 13px; height: 13px; color: var(--aws-smile-orange);"></i> Admin
+          </a>
+
+          <a href="#recruitments" class="btn btn-primary cyber-glow-btn" style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">
+            Join SBG
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ==========================================
+           02. HERO SECTION
+           ========================================== -->
+      <section id="overview" style="position: relative; min-height: 94vh; display: flex; align-items: center; padding-top: 64px; overflow: hidden;">
+        <!-- Ambient gradient overlay -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 35%; background: linear-gradient(0deg, var(--bg-canvas) 0%, transparent 100%); z-index: 2; pointer-events: none;"></div>
+
+        <div class="container" style="position: relative; z-index: 10; padding-top: 3rem; padding-bottom: 4rem;">
+          <div class="hero-cyber-layout">
+            <!-- Left: Text Content -->
+            <div class="hero-left-content">
+              <!-- Cyberpunk Badge -->
+              <div class="cyber-section-badge" style="margin-bottom: 1.5rem;">
+                <span class="cyber-badge-pulse"></span>
+                AWS STUDENT BUILDER GROUP &bull; VPKBIET BARAMATI
+              </div>
+
+              <!-- Headline with Animated Cyber Glitch Word -->
+              <h1 style="margin-bottom: 1.25rem; font-family: 'Orbitron', var(--font-display); letter-spacing: -0.01em;">
+                Build. Learn.<br><span class="cyber-glitch-word" id="hero-typed-word" data-text="CODING.">CODING.</span>
+              </h1>
+
+              <!-- Subtitle -->
+              <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 540px;">
+                A student-led tech community exploring <span class="text-cyan">AWS Architecture</span>, cloud infrastructure, <span class="text-magenta">Amazon Bedrock GenAI</span>, and open-source engineering at VPKBIET, Baramati.
+              </p>
+
+              <!-- Action Buttons -->
+              <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 2rem;">
+                <a href="#projects" class="btn btn-primary cyber-glow-btn">
+                  Explore Projects <i data-lucide="arrow-right" style="width: 15px; height: 15px;"></i>
+                </a>
+                <a href="#recruitments" class="btn btn-secondary">
+                  <i data-lucide="user-plus" style="width: 15px; height: 15px; color: var(--aws-smile-orange);"></i> Become a Builder
+                </a>
+                <button onclick="toggleScoutAi(true)" class="btn btn-ghost cyber-ai-btn">
+                  <i data-lucide="bot" style="width: 15px; height: 15px;"></i> Ask SBG AI
+                </button>
+              </div>
+
+              <!-- Technical Status Pill -->
+              <div class="cyber-status-pill">
+                <span class="cyber-pill-node">SBG//VPKBIET</span>
+                <span class="cyber-pill-sep">|</span>
+                <span class="cyber-pill-online"><span class="status-dot"></span> ONLINE</span>
+                <span class="cyber-pill-sep">|</span>
+                <span class="cyber-pill-mode">MODE: BUILD_PROD</span>
+                <span class="cyber-pill-sep">|</span>
+                <span class="cyber-pill-region">ap-south-1</span>
+              </div>
+            </div>
+
+            <!-- Right: Cyberpunk Terminal Component (Cleanly Separated from 3D Center Corridor) -->
+            <div class="hero-right-content">
+              <div id="cyber-terminal-root" class="cyber-terminal-wrapper">
+                <!-- Injected by cyberpunk-text.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           03. LIVE COMMUNITY STATUS STRIP
+           ========================================== -->
+      <section class="status-strip-container">
+        <div class="container">
+          <div class="status-strip-grid">
+            <div class="status-strip-item">
+              <div class="status-strip-label">
+                <span class="status-dot"></span> Community Status
+              </div>
+              <div class="status-strip-value" id="strip-status-val">ACTIVE // PROD</div>
+            </div>
+
+            <div class="status-strip-item">
+              <div class="status-strip-label">
+                <i data-lucide="cpu" style="width: 11px; height: 11px; color: var(--aws-smile-orange);"></i> Current Focus
+              </div>
+              <div class="status-strip-value" id="strip-focus-val" style="font-size: 0.88rem; font-family: var(--font-mono); color: var(--aws-smile-orange);">
+                AWS • CLOUD • GENAI • DATA
+              </div>
+            </div>
+
+            <div class="status-strip-item">
+              <div class="status-strip-label">
+                <i data-lucide="layers" style="width: 11px; height: 11px; color: var(--aws-cloud-blue);"></i> Projects
+              </div>
+              <div class="status-strip-value" id="strip-projects-val" style="font-size: 0.88rem; font-family: var(--font-mono); color: var(--aws-cloud-blue);">
+                4 DEMO READY
+              </div>
+            </div>
+
+            <div class="status-strip-item">
+              <div class="status-strip-label">
+                <i data-lucide="calendar" style="width: 11px; height: 11px; color: var(--accent-emerald);"></i> Events This Year
+              </div>
+              <div class="status-strip-value" id="strip-events-val" style="font-size: 0.88rem; font-family: var(--font-mono); color: var(--accent-emerald);">
+                8 WORKSHOPS & LABS
+              </div>
+            </div>
+
+            <div class="status-strip-item">
+              <div class="status-strip-label">
+                <i data-lucide="users" style="width: 11px; height: 11px; color: var(--accent-purple);"></i> Active Builders
+              </div>
+              <div class="status-strip-value" id="strip-builders-val" style="font-size: 0.88rem; font-family: var(--font-mono); color: var(--accent-purple);">
+                120+ STUDENTS
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           04. BUILT FOR BUILDERS (ABOUT)
+           ========================================== -->
+      <section id="about" class="section-wrapper">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Who We Are</div>
+            <h2>Built for Builders.</h2>
+            <p class="section-subtitle">
+              AWS Student Builder Group at VPKBIET is a student-led engineering collective dedicated to learning by doing, exploring cloud architectures, and shipping real technical solutions.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;" class="stagger-children reveal-on-scroll">
+            <!-- Principle 01 -->
+            <div class="glass-card" style="padding: 1.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--aws-smile-orange); margin-bottom: 0.65rem;">
+                01
+              </div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.65rem;">Learn by Building</h3>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                We replace passive lectures with hands-on labs, command-line experimentation, and direct engagement with AWS cloud infrastructure.
+              </p>
+            </div>
+
+            <!-- Principle 02 -->
+            <div class="glass-card" style="padding: 1.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--aws-cloud-blue); margin-bottom: 0.65rem;">
+                02
+              </div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.65rem;">Collaborate Openly</h3>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                Knowledge belongs to the community. We embrace open source, share starter templates, and foster peer-to-peer student mentorship.
+              </p>
+            </div>
+
+            <!-- Principle 03 -->
+            <div class="glass-card" style="padding: 1.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent-emerald); margin-bottom: 0.65rem;">
+                03
+              </div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.65rem;">Ship Real Projects</h3>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                Moving from toy scripts to deployed applications with automated CI/CD, monitored uptime, and Well-Architected cloud standards.
+              </p>
+            </div>
+
+            <!-- Principle 04 -->
+            <div class="glass-card" style="padding: 1.75rem;">
+              <div style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent-purple); margin-bottom: 0.65rem;">
+                04
+              </div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 0.65rem;">Grow Together</h3>
+              <p style="font-size: 0.85rem; line-height: 1.6;">
+                Cultivating high-caliber cloud practitioners, hackathon innovators, and certified engineers ready for global technology careers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           05. OUR DOMAINS
+           ========================================== -->
+      <section id="domains" class="section-wrapper" style="background: rgba(15, 20, 25, 0.35);">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Specialization Areas</div>
+            <h2>Our Technical Domains</h2>
+            <p class="section-subtitle">
+              Students contribute and specialize across eight structured domains designed to mirror modern engineering organizations.
+            </p>
+          </div>
+
+          <div id="domains-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;" class="stagger-children reveal-on-scroll">
+            <!-- Domain 01 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Cloud & DevOps</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Cloud-native architectures, infrastructure as code, serverless computing, and CI/CD automation.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">AWS Cloud</span>
+                  <span class="service-pill aws-blue">Docker</span>
+                  <span class="service-pill aws-blue">Terraform</span>
+                  <span class="service-pill aws-blue">AWS CDK</span>
+                  <span class="service-pill aws-blue">GitHub Actions</span>
+                  <span class="service-pill aws-blue">Lambda</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Cloud & DevOps
+              </div>
+            </div>
+
+            <!-- Domain 02 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">AI & Machine Learning</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Generative AI applications, foundation models on Amazon Bedrock, and applied deep learning.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Amazon Bedrock</span>
+                  <span class="service-pill aws-blue">SageMaker</span>
+                  <span class="service-pill aws-blue">Python</span>
+                  <span class="service-pill aws-blue">LangChain</span>
+                  <span class="service-pill aws-blue">Vector DBs</span>
+                  <span class="service-pill aws-blue">PyTorch</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — AI & ML
+              </div>
+            </div>
+
+            <!-- Domain 03 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Data & Analytics</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Modern data pipelines, stream processing, data warehousing, and telemetry visualization.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Amazon Athena</span>
+                  <span class="service-pill aws-blue">AWS Glue</span>
+                  <span class="service-pill aws-blue">Kinesis</span>
+                  <span class="service-pill aws-blue">PostgreSQL</span>
+                  <span class="service-pill aws-blue">Amazon QuickSight</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Data & Analytics
+              </div>
+            </div>
+
+            <!-- Domain 04 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Software Engineering</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Full-stack web applications, microservices, distributed systems, and API design.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">TypeScript</span>
+                  <span class="service-pill aws-blue">Next.js</span>
+                  <span class="service-pill aws-blue">Node.js</span>
+                  <span class="service-pill aws-blue">AWS AppSync</span>
+                  <span class="service-pill aws-blue">GraphQL</span>
+                  <span class="service-pill aws-blue">DynamoDB</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Software Engineering
+              </div>
+            </div>
+
+            <!-- Domain 05 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Open Source & Systems</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Open-source development, community toolkits, starter templates, and Linux systems.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Git</span>
+                  <span class="service-pill aws-blue">Linux</span>
+                  <span class="service-pill aws-blue">Rust</span>
+                  <span class="service-pill aws-blue">Go</span>
+                  <span class="service-pill aws-blue">OpenSSF</span>
+                  <span class="service-pill aws-blue">Markdown</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Open Source
+              </div>
+            </div>
+
+            <!-- Domain 06 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">UI/UX & Creative Tech</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Design systems, accessible interfaces, human-computer interaction, and technical branding.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Figma</span>
+                  <span class="service-pill aws-blue">Design Tokens</span>
+                  <span class="service-pill aws-blue">CSS3 / Canvas</span>
+                  <span class="service-pill aws-blue">Three.js</span>
+                  <span class="service-pill aws-blue">Tailwind</span>
+                  <span class="service-pill aws-blue">Motion</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — UI/UX
+              </div>
+            </div>
+
+            <!-- Domain 07 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Community & DevRel</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Developer advocacy, technical writing, workshop facilitation, and student outreach.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Technical Writing</span>
+                  <span class="service-pill aws-blue">Public Speaking</span>
+                  <span class="service-pill aws-blue">Community Ops</span>
+                  <span class="service-pill aws-blue">Discord</span>
+                  <span class="service-pill aws-blue">Dev.to</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Community & DevRel
+              </div>
+            </div>
+
+            <!-- Domain 08 -->
+            <div class="glass-card" style="padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.65rem;">
+                  <span class="service-pill aws-orange">Active Domain</span>
+                  <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+                </div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.4rem;">Events & Operations</h3>
+                <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.55;">
+                  Hackathon logistics, venue coordination, timeline management, and builder onboarding.
+                </p>
+                <div style="font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem; letter-spacing: 0.04em;">
+                  Core Technologies:
+                </div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem;">
+                  <span class="service-pill aws-blue">Agile Planning</span>
+                  <span class="service-pill aws-blue">Event Tooling</span>
+                  <span class="service-pill aws-blue">Notion</span>
+                  <span class="service-pill aws-blue">Logistics</span>
+                  <span class="service-pill aws-blue">Operations</span>
+                </div>
+              </div>
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: 0.85rem; font-size: 0.76rem; color: var(--aws-smile-orange); font-family: var(--font-mono);">
+                Domain Lead — Events & Operations
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           06. HOW WE BUILD PIPELINE
+           ========================================== -->
+      <section class="section-wrapper">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Engineering Methodology</div>
+            <h2>How We Build</h2>
+            <p class="section-subtitle">
+              From an initial idea to deployment and open community sharing, every project follows a structured engineering pipeline.
+            </p>
+          </div>
+
+          <div class="pipeline-container reveal-on-scroll">
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="lightbulb" style="width: 20px; height: 20px; color: var(--aws-smile-orange);"></i>
+              </div>
+              <div class="pipeline-title">01 Discover</div>
+              <div class="pipeline-desc">Identify real problems and validate system feasibility.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="book-open" style="width: 20px; height: 20px; color: var(--aws-cloud-blue);"></i>
+              </div>
+              <div class="pipeline-title">02 Learn</div>
+              <div class="pipeline-desc">Study cloud patterns, AWS docs, and required SDKs.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="pen-tool" style="width: 20px; height: 20px; color: var(--accent-emerald);"></i>
+              </div>
+              <div class="pipeline-title">03 Design</div>
+              <div class="pipeline-desc">Create architectural diagrams and data schemas.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="terminal" style="width: 20px; height: 20px; color: var(--accent-purple);"></i>
+              </div>
+              <div class="pipeline-title">04 Build</div>
+              <div class="pipeline-desc">Write clean, modular code with Infrastructure as Code.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="cloud-upload" style="width: 20px; height: 20px; color: var(--aws-smile-orange);"></i>
+              </div>
+              <div class="pipeline-title">05 Deploy</div>
+              <div class="pipeline-desc">Automate deployment to AWS with CI/CD workflows.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="play" style="width: 20px; height: 20px; color: var(--aws-cloud-blue);"></i>
+              </div>
+              <div class="pipeline-title">06 Demo</div>
+              <div class="pipeline-desc">Conduct live walkthroughs with student peers.</div>
+            </div>
+
+            <div class="pipeline-step">
+              <div class="pipeline-node">
+                <i data-lucide="share-2" style="width: 20px; height: 20px; color: var(--accent-emerald);"></i>
+              </div>
+              <div class="pipeline-title">07 Share</div>
+              <div class="pipeline-desc">Open-source the repository and publish guides.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           07. FEATURED DEMO PROJECTS
+           ========================================== -->
+      <section id="projects" class="section-wrapper" style="background: rgba(15, 20, 25, 0.35);">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Project Showcase</div>
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">
+              Sample reference architectures and student-engineered prototypes demonstrating cloud-native capabilities.
+            </p>
+          </div>
+
+          <!-- Filter & Search -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.75rem;" class="reveal-on-scroll">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;" id="project-filter-buttons">
+              <button class="filter-btn active" data-cat="All">All</button>
+              <button class="filter-btn" data-cat="Cloud">Cloud</button>
+              <button class="filter-btn" data-cat="AI">AI</button>
+              <button class="filter-btn" data-cat="Web">Web</button>
+              <button class="filter-btn" data-cat="Data">Data</button>
+              <button class="filter-btn" data-cat="Open Source">Open Source</button>
+            </div>
+
+            <div style="position: relative; min-width: 240px;">
+              <i data-lucide="search" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; color: var(--text-muted);"></i>
+              <input type="text" id="project-search-bar" class="form-input" placeholder="Search projects or AWS services..." style="padding-left: 2.25rem; font-size: 0.82rem;" />
+            </div>
+          </div>
+
+          <!-- Projects Grid -->
+          <div id="public-projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;" class="stagger-children">
+            <!-- 01: EcoNutri AI -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#10B98118;border:1px solid #10B98140;color:#10B981;text-transform:uppercase;letter-spacing:0.06em;">AgTech</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.25);color:#FF9900;">Regional Impact</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#10B981;box-shadow:0 0 8px #10B981;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">EcoNutri AI</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#10B981;margin-bottom:0.6rem;line-height:1.4;">Cloud-Native Precision Agriculture & Soil Nutrient Diagnostics</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Solar-powered IoT sensors deployed across Baramati agricultural fields transmit real-time N-P-K soil metrics. An AWS serverless pipeline analyzes nutrient deficiency and generates hyper-localized Marathi/English fertilizer schedules via Amazon Bedrock.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">22%</div><div class="cyber-metric-label">Fertilizer Waste Reduction</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">45+</div><div class="cyber-metric-label">Active Baramati Farms</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">&lt;1.2s</div><div class="cyber-metric-label">Diagnostic Latency</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">AWS IoT Core</span>
+                <span class="service-pill aws-blue">AWS Lambda</span>
+                <span class="service-pill aws-blue">Amazon DynamoDB</span>
+                <span class="service-pill aws-blue">Amazon Bedrock</span>
+                <span class="service-pill aws-blue">Amazon SNS</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Omkar (AI/ML Lead) &middot; Pooja D. (IoT Systems) &middot; Sanket M. (Cloud Ops)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/econutri-ai" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://econutri.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#10B98140;" onclick="openProjectArchitectureModal('econutri-ai')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+
+            <!-- 02: SkipShop AI -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#8B5CF618;border:1px solid #8B5CF640;color:#8B5CF6;text-transform:uppercase;letter-spacing:0.06em;">GenAI</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.25);color:#FF9900;">Flagship Demo</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#8B5CF6;box-shadow:0 0 8px #8B5CF6;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">SkipShop AI</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#8B5CF6;margin-bottom:0.6rem;line-height:1.4;">Edge Computer Vision & Serverless Autonomous Retail Checkout</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Frictionless checkout experience tailored for local semi-urban grocery stores and college campus marts. Edge cameras track items with computer vision, synchronizing with AWS AppSync GraphQL for instant queue-free payment.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">78%</div><div class="cyber-metric-label">Queue Time Reduction</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">4.5s</div><div class="cyber-metric-label">Checkout Speed</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">99.2%</div><div class="cyber-metric-label">Item Accuracy</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">Amazon Rekognition</span>
+                <span class="service-pill aws-blue">AWS AppSync</span>
+                <span class="service-pill aws-blue">AWS Lambda</span>
+                <span class="service-pill aws-blue">Amazon DynamoDB</span>
+                <span class="service-pill aws-blue">Amazon S3</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Omkar (AI/ML Lead) &middot; Pooja N. (DevOps) &middot; Neha P. (Full Stack)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/skipshop-ai" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://skipshop.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#8B5CF640;" onclick="openProjectArchitectureModal('skipshop-ai')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+
+            <!-- 03: CampusGrid Smart Energy -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#06B6D418;border:1px solid #06B6D440;color:#06B6D4;text-transform:uppercase;letter-spacing:0.06em;">IoT & Green Tech</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.25);color:#FF9900;">Eco-Tech</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#06B6D4;box-shadow:0 0 8px #06B6D4;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">CampusGrid Smart Energy</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#06B6D4;margin-bottom:0.6rem;line-height:1.4;">VPKBIET Green Campus Micro-Grid Analytics</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Real-time energy telemetry across VPKBIET academic buildings. Visualizes solar generation and HVAC load to reduce peak institutional electricity tariffs.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">450 kWh</div><div class="cyber-metric-label">Solar Tracked/Day</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">14%</div><div class="cyber-metric-label">Peak Load Cut</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">28 Nodes</div><div class="cyber-metric-label">Live Sub-Meters</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">AWS IoT Greengrass</span>
+                <span class="service-pill aws-blue">Amazon Timestream</span>
+                <span class="service-pill aws-blue">Amazon QuickSight</span>
+                <span class="service-pill aws-blue">AWS Lambda</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Shubham G. (IoT Lead) &middot; Omkar (Architecture)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/campusgrid-iot" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://campusgrid.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#06B6D440;" onclick="openProjectArchitectureModal('campusgrid-iot')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+
+            <!-- 04: PulseMed AI -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#8B5CF618;border:1px solid #8B5CF640;color:#8B5CF6;text-transform:uppercase;letter-spacing:0.06em;">GenAI</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(0,164,228,0.08);border:1px solid rgba(0,164,228,0.25);color:#00A4E4;">Healthcare</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#8B5CF6;box-shadow:0 0 8px #8B5CF6;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">PulseMed AI</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#8B5CF6;margin-bottom:0.6rem;line-height:1.4;">Multilingual Clinical Triage Assistant for Rural Clinics</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Built for primary healthcare sub-centers in rural Pune. Uses Amazon Transcribe Medical and Bedrock to translate local Marathi voice symptom descriptions into structured clinical summaries.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">94.8%</div><div class="cyber-metric-label">Voice Accuracy</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">6 mins</div><div class="cyber-metric-label">Triage Time Saved</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">8</div><div class="cyber-metric-label">Rural Doctors Piloting</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">Amazon Bedrock</span>
+                <span class="service-pill aws-blue">Amazon Transcribe</span>
+                <span class="service-pill aws-blue">Amazon S3</span>
+                <span class="service-pill aws-blue">AWS Step Functions</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Omkar (AI/ML Lead) &middot; Kavita S. (BioTech/NLP)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/pulsemed-ai" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://pulsemed.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#8B5CF640;" onclick="openProjectArchitectureModal('pulsemed-ai')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+
+            <!-- 05: CloudForge CDK -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#F43F5E18;border:1px solid #F43F5E40;color:#F43F5E;text-transform:uppercase;letter-spacing:0.06em;">DevOps</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(255,153,0,0.08);border:1px solid rgba(255,153,0,0.25);color:#FF9900;">Open Source</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#F43F5E;box-shadow:0 0 8px #F43F5E;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">CloudForge CDK</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#F43F5E;margin-bottom:0.6rem;line-height:1.4;">Production-Ready AWS CDK v2 Infrastructure Templates for Students</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Curated open-source collection of reusable AWS CDK v2 constructs tailored for collegiate hackathons and capstones: Serverless microservices, VPC peering, and Bedrock RAG pipelines.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">180+</div><div class="cyber-metric-label">GitHub Stars</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">12</div><div class="cyber-metric-label">Verified Blueprints</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">420+</div><div class="cyber-metric-label">Student Deployments</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">AWS CloudFormation</span>
+                <span class="service-pill aws-blue">AWS CodePipeline</span>
+                <span class="service-pill aws-blue">Amazon S3</span>
+                <span class="service-pill aws-blue">AWS IAM</span>
+                <span class="service-pill aws-blue">Amazon Route 53</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Pooja N. (DevOps Lead) &middot; Omkar (Architect) &middot; Prashant B. (DevRel)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/cloudforge-cdk" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://cdk.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#F43F5E40;" onclick="openProjectArchitectureModal('cloudforge-cdk')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+
+            <!-- 06: Bedrock Campus RAG -->
+            <div class="glass-card cyber-project-card" style="padding:1.5rem;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.08);background:rgba(15,20,25,0.85);backdrop-filter:blur(16px);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <div style="display:flex;gap:0.35rem;align-items:center;">
+                  <span style="font-family:var(--font-mono);font-size:0.62rem;font-weight:700;padding:0.18rem 0.5rem;border-radius:5px;background:#8B5CF618;border:1px solid #8B5CF640;color:#8B5CF6;text-transform:uppercase;letter-spacing:0.06em;">GenAI</span>
+                  <span style="font-family:var(--font-mono);font-size:0.6rem;padding:0.15rem 0.45rem;border-radius:4px;background:rgba(0,164,228,0.08);border:1px solid rgba(0,164,228,0.25);color:#00A4E4;">GenAI Pilot</span>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#8B5CF6;box-shadow:0 0 8px #8B5CF6;"></div>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:0.25rem;">Bedrock Campus RAG</h3>
+              <p style="font-size:0.8rem;font-weight:600;color:#8B5CF6;margin-bottom:0.6rem;line-height:1.4;">Student Academic Handbook & Cloud Curriculum AI Knowledge Engine</p>
+              <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.55;margin-bottom:1rem;flex-grow:1;">Indexes VPKBIET academic regulations and official AWS documentation into Amazon OpenSearch Serverless, answering queries via Claude 3.5 Sonnet.</p>
+              <div style="display:flex;gap:0.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">2,400+</div><div class="cyber-metric-label">Queries Answered</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">98.5%</div><div class="cyber-metric-label">Citation Accuracy</div></div>
+                <div class="cyber-metric-badge"><div class="cyber-metric-val">850ms</div><div class="cyber-metric-label">Retrieval Latency</div></div>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
+                <span class="service-pill aws-blue">Amazon Bedrock</span>
+                <span class="service-pill aws-blue">Amazon OpenSearch</span>
+                <span class="service-pill aws-blue">AWS Lambda</span>
+                <span class="service-pill aws-blue">Amazon S3</span>
+              </div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; Aditya S. (AI Lead) &middot; Omkar (Cloud Architect)</div>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
+                <div style="display:flex;gap:0.4rem;">
+                  <a href="https://github.com/aws-sbg-vpkbiet/bedrock-campus-rag" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+                  <a href="https://rag.vpkbiet.ac.in" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
+                </div>
+                <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:#8B5CF640;" onclick="openProjectArchitectureModal('bedrock-campus-rag')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           08. UPCOMING EVENTS
+           ========================================== -->
+      <section id="events" class="section-wrapper">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Workshops & Meetups</div>
+            <h2>Upcoming Events</h2>
+            <p class="section-subtitle">
+              Join live technical bootcamps, hands-on lab sessions, and hackathons organized for VPKBIET student builders.
+            </p>
+          </div>
+
+          <div id="public-events-list" style="display: flex; flex-direction: column; gap: 1.15rem;" class="stagger-children reveal-on-scroll">
+            <!-- Event 01 -->
+            <div class="glass-card" style="padding: 1.5rem;">
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.85rem; margin-bottom: 0.85rem;">
+                <div>
+                  <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.35rem;">
+                    <span class="service-pill aws-orange">Flagship Bootcamp</span>
+                    <span class="demo-tag">Hands-on Lab</span>
+                  </div>
+                  <h3 style="font-size: 1.25rem;">AWS Community Day & Cloud Practitioner Bootcamp</h3>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-family: var(--font-mono); font-weight: 700; color: var(--aws-smile-orange); font-size: 0.88rem;">OCTOBER 14, 2026</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">10:00 AM - 4:00 PM IST</div>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.1rem; line-height: 1.6;">
+                Intensive 1-day crash course covering AWS Global Infrastructure, IAM best practices, VPC networking, and free voucher distribution for AWS Certified Cloud Practitioner.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.85rem; border-top: 1px solid var(--border-subtle); padding-top: 0.85rem;">
+                <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; color: var(--aws-cloud-blue);"></i>
+                  VPKBIET Main Auditorium & Live Stream • Speaker: <strong style="color: var(--text-primary);">AWS Community Hero</strong>
+                </div>
+                <button class="btn btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;" onclick="openEventRegistrationModal('AWS Community Day & Cloud Practitioner Bootcamp')">
+                  RSVP (Demo) <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 02 -->
+            <div class="glass-card" style="padding: 1.5rem;">
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.85rem; margin-bottom: 0.85rem;">
+                <div>
+                  <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.35rem;">
+                    <span class="service-pill aws-orange">Hackathon</span>
+                    <span class="demo-tag">$1,500 AWS Credits</span>
+                  </div>
+                  <h3 style="font-size: 1.25rem;">BuildOn AI: Amazon Bedrock 24-Hour Hackathon</h3>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-family: var(--font-mono); font-weight: 700; color: var(--aws-smile-orange); font-size: 0.88rem;">NOVEMBER 06 - 07, 2026</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Overnight Hackathon</div>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.1rem; line-height: 1.6;">
+                Design and deploy GenAI solutions tackling regional agriculture, healthcare, or education challenges using Claude 3.5, Llama 3, and Titan models on Amazon Bedrock.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.85rem; border-top: 1px solid var(--border-subtle); padding-top: 0.85rem;">
+                <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; color: var(--aws-cloud-blue);"></i>
+                  Computer Dept Labs, VPKBIET • Speaker: <strong style="color: var(--text-primary);">AWS SBG Mentors</strong>
+                </div>
+                <button class="btn btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;" onclick="openEventRegistrationModal('BuildOn AI: Amazon Bedrock 24-Hour Hackathon')">
+                  RSVP (Demo) <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Event 03 -->
+            <div class="glass-card" style="padding: 1.5rem;">
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 0.85rem; margin-bottom: 0.85rem;">
+                <div>
+                  <div style="display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.35rem;">
+                    <span class="service-pill aws-orange">Virtual Workshop</span>
+                    <span class="demo-tag">Intermediate</span>
+                  </div>
+                  <h3 style="font-size: 1.25rem;">Mastering AWS Lambda & EventBridge Architecture</h3>
+                </div>
+                <div style="text-align: right;">
+                  <div style="font-family: var(--font-mono); font-weight: 700; color: var(--aws-smile-orange); font-size: 0.88rem;">NOVEMBER 21, 2026</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">3:00 PM - 5:30 PM IST</div>
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.1rem; line-height: 1.6;">
+                Deep dive into decoupled microservice architectures using EventBridge Pipes, Step Functions, and DynamoDB single-table design.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.85rem; border-top: 1px solid var(--border-subtle); padding-top: 0.85rem;">
+                <div style="font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem;">
+                  <i data-lucide="map-pin" style="width: 13px; height: 13px; color: var(--aws-cloud-blue);"></i>
+                  Virtual Hands-on Workshop (Discord Stage) • Speaker: <strong style="color: var(--text-primary);">Pooja N. Jagtap (DevOps Lead)</strong>
+                </div>
+                <button class="btn btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;" onclick="openEventRegistrationModal('Mastering AWS Lambda & EventBridge Architecture')">
+                  RSVP (Demo) <i data-lucide="chevron-right" style="width: 13px; height: 13px;"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           09. MEET THE TEAM
+           ========================================== -->
+      <section id="team" class="section-wrapper" style="background: rgba(15, 20, 25, 0.35);">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Leadership & Community</div>
+            <h2>Meet the Core Team</h2>
+            <p class="section-subtitle">
+              Interactive organization directory showing the faculty advisors, student leadership, and domain leads guiding AWS SBG VPKBIET.
+            </p>
+          </div>
+
+          <!-- Hierarchy Navigation -->
+          <div class="org-tree-nav reveal-on-scroll" id="org-tree-nav">
+            <button class="org-tree-tier-btn active" data-tier="All">All Tiers</button>
+            <button class="org-tree-tier-btn" data-tier="Faculty Coordination">Faculty Coordination</button>
+            <button class="org-tree-tier-btn" data-tier="Team Leadership">Team Leadership</button>
+            <button class="org-tree-tier-btn" data-tier="Domain Leads">Domain Leads</button>
+          </div>
+
+          <!-- Members Grid -->
+          <div id="public-members-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem;" class="stagger-children">
+            <!-- 01: Dr. Sachin S. Patil -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#FF9900;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#FF990022,#FF990044);border:1.5px solid #FF990055;">
+                  <span style="color:#FF9900;font-size:1.05rem;position:relative;z-index:1;">DS</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Dr. Sachin S. Patil</h3>
+                  <div style="font-size:0.72rem;color:#FF9900;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Faculty Advisor & Chapter Patron</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#127891; Faculty Coordination</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; Faculty / HOD</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Head of Department & AWS Academy Accredited Educator. Mentoring student cloud initiatives, institutional AWS research grants, and regional tech incubation.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Academy Educator</span>
+                <span class="cyber-cert-pill">&#10022; Ph.D. Cloud Systems</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Distributed Systems</span>
+                <span class="cyber-skill-pill">Cloud Strategy</span>
+                <span class="cyber-skill-pill">Mentorship</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://vpkbiet.org" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="globe" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/sachin-patil-vpkbiet" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Faculty Advisor</span>
+              </div>
+            </div>
+
+            <!-- 02: Omkar S. Deshmukh -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#FF9900;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#FF990022,#FF990044);border:1.5px solid #FF990055;">
+                  <span style="color:#FF9900;font-size:1.05rem;position:relative;z-index:1;">OS</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Omkar S. Deshmukh</h3>
+                  <div style="font-size:0.72rem;color:#FF9900;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Student Community Lead & Architect</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#9889; Team Leadership</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Final-year builder driving AWS community adoption at VPKBIET. Passionate about serverless architectures, Amazon Bedrock agent development, and zero-cost cloud patterns.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Certified Solutions Architect</span>
+                <span class="cyber-cert-pill">&#10022; AWS Certified AI Practitioner</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Cloud Architecture</span>
+                <span class="cyber-skill-pill">Bedrock</span>
+                <span class="cyber-skill-pill">Serverless</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/omkar-deshmukh-builder" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/omkar-deshmukh-cloud" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Community Lead</span>
+              </div>
+            </div>
+
+            <!-- 03: Pooja N. Jagtap -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#00A4E4;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#00A4E422,#00A4E444);border:1.5px solid #00A4E455;">
+                  <span style="color:#00A4E4;font-size:1.05rem;position:relative;z-index:1;">PN</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Pooja N. Jagtap</h3>
+                  <div style="font-size:0.72rem;color:#00A4E4;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Cloud & DevOps Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Specializes in Infrastructure as Code with AWS CDK and Terraform, multi-stage CI/CD deployment pipelines, and Docker containerization.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Certified Solutions Architect</span>
+                <span class="cyber-cert-pill">&#10022; Docker Certified</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">AWS CDK v2</span>
+                <span class="cyber-skill-pill">Terraform</span>
+                <span class="cyber-skill-pill">Docker</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/pooja-jagtap-devops" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/pooja-jagtap-cloud" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Cloud & DevOps</span>
+              </div>
+            </div>
+
+            <!-- 04: Aditya K. Shinde -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#8B5CF6;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#8B5CF622,#8B5CF644);border:1.5px solid #8B5CF655;">
+                  <span style="color:#8B5CF6;font-size:1.05rem;position:relative;z-index:1;">AK</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Aditya K. Shinde</h3>
+                  <div style="font-size:0.72rem;color:#8B5CF6;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">AI & Machine Learning Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; AI & Data Science &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Directs student AI hackathons, foundation model orchestration on Amazon Bedrock, and RAG architectures with vector databases.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Certified AI Practitioner</span>
+                <span class="cyber-cert-pill">&#10022; PyTorch Specialist</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Amazon Bedrock</span>
+                <span class="cyber-skill-pill">LangChain</span>
+                <span class="cyber-skill-pill">Python</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/aditya-shinde-ai" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/aditya-shinde-aiml" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">AI & ML</span>
+              </div>
+            </div>
+
+            <!-- 05: Neha R. Patil -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#06B6D4;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#06B6D422,#06B6D444);border:1.5px solid #06B6D455;">
+                  <span style="color:#06B6D4;font-size:1.05rem;position:relative;z-index:1;">NR</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Neha R. Patil</h3>
+                  <div style="font-size:0.72rem;color:#06B6D4;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Software Engineering Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Information Technology &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Full-stack developer architecting reactive web applications, GraphQL interfaces with AWS AppSync, and DynamoDB single-table designs.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Certified Developer</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Next.js / React</span>
+                <span class="cyber-skill-pill">TypeScript</span>
+                <span class="cyber-skill-pill">AppSync</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/neha-patil-code" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/neha-patil-swe" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Software Eng</span>
+              </div>
+            </div>
+
+            <!-- 06: Tanvi V. Joshi -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#EC4899;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#EC489922,#EC489944);border:1.5px solid #EC489955;">
+                  <span style="color:#EC4899;font-size:1.05rem;position:relative;z-index:1;">TJ</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Tanvi V. Joshi</h3>
+                  <div style="font-size:0.72rem;color:#EC4899;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Creative Tech & UI/UX Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; SE (Second Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Crafting premium design systems, accessible developer console interfaces, 3D WebGL user interactions, and visual brand identity.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; Google UX Design Pro</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Figma Systems</span>
+                <span class="cyber-skill-pill">Three.js</span>
+                <span class="cyber-skill-pill">CSS3</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/tanvi-joshi-ui" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/tanvi-joshi-design" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">UI/UX</span>
+              </div>
+            </div>
+
+            <!-- 07: Sanket M. Ghadge -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#06B6D4;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#06B6D422,#06B6D444);border:1.5px solid #06B6D455;">
+                  <span style="color:#06B6D4;font-size:1.05rem;position:relative;z-index:1;">SG</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Sanket M. Ghadge</h3>
+                  <div style="font-size:0.72rem;color:#06B6D4;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Data & Telemetry Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Architecting real-time streaming telemetry pipelines with AWS IoT Greengrass, Amazon Timestream, Glue ETL, and QuickSight dashboards.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Certified Data Analytics</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Amazon Athena</span>
+                <span class="cyber-skill-pill">AWS Glue</span>
+                <span class="cyber-skill-pill">QuickSight</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/sanket-ghadge-data" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/sanket-ghadge-data" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Data & Analytics</span>
+              </div>
+            </div>
+
+            <!-- 08: Prashant B. Thorat -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#10B981;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#10B98122,#10B98144);border:1.5px solid #10B98155;">
+                  <span style="color:#10B981;font-size:1.05rem;position:relative;z-index:1;">PT</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Prashant B. Thorat</h3>
+                  <div style="font-size:0.72rem;color:#10B981;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Cloud Security & DevRel Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; TE (Third Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">DevRel speaker and cloud security enthusiast. Focuses on IAM least-privilege policies, CloudWatch anomaly alerting, and student workshops.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Cloud Practitioner</span>
+                <span class="cyber-cert-pill">&#10022; Terraform Associate</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Cloud Security</span>
+                <span class="cyber-skill-pill">AWS IAM</span>
+                <span class="cyber-skill-pill">DevRel</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/prashant-thorat-cloud" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/prashant-thorat-devrel" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Community & DevRel</span>
+              </div>
+            </div>
+
+            <!-- 09: Kavita D. Salunkhe -->
+            <div class="glass-card cyber-profile-card" style="padding:1.4rem;--member-color:#F59E0B;">
+              <div style="display:flex;align-items:flex-start;gap:0.85rem;margin-bottom:0.85rem;">
+                <div class="cyber-avatar" style="background:linear-gradient(135deg,#F59E0B22,#F59E0B44);border:1.5px solid #F59E0B55;">
+                  <span style="color:#F59E0B;font-size:1.05rem;position:relative;z-index:1;">KS</span>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <h3 style="font-size:1rem;margin-bottom:0.12rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Kavita D. Salunkhe</h3>
+                  <div style="font-size:0.72rem;color:#F59E0B;font-weight:700;margin-bottom:0.12rem;line-height:1.3;">Events & Operations Lead</div>
+                  <div style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);">&#128296; Domain Leads</div>
+                </div>
+              </div>
+              <div style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:0.65rem;background:rgba(255,255,255,0.03);padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border-subtle);">&#128208; Computer Engineering &nbsp;|&nbsp; SE (Second Year)</div>
+              <p style="font-size:0.75rem;color:var(--text-secondary);line-height:1.55;margin-bottom:0.85rem;">Managing student hackathon logistics, certification study groups, community Discord engagement, and technical workshop execution.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">
+                <span class="cyber-cert-pill">&#10022; AWS Skill Builder Lead</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">
+                <span class="cyber-skill-pill">Event Management</span>
+                <span class="cyber-skill-pill">Operations</span>
+                <span class="cyber-skill-pill">Discord Ops</span>
+              </div>
+              <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
+                <a href="https://github.com/kavita-salunkhe-ops" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
+                <a href="https://linkedin.com/in/kavita-salunkhe-community" target="_blank" rel="noopener noreferrer" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+                <span style="flex:1;"></span>
+                <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">Events & Ops</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           10. ACHIEVEMENTS & IMPACT
+           ========================================== -->
+      <section class="section-wrapper">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Milestones & Impact</div>
+            <h2>Community Achievements</h2>
+            <p class="section-subtitle">
+              A transparent framework tracking real community milestones, workshop participation, and open-source contributions.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;" class="stagger-children reveal-on-scroll">
+            <div class="glass-card" style="padding: 1.75rem; text-align: center; border: 1px solid rgba(255, 153, 0, 0.2);">
+              <i data-lucide="award" style="width: 28px; height: 28px; color: var(--aws-smile-orange); margin: 0 auto 0.85rem auto;"></i>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.45rem;">AWS Certifications</h3>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+                Official certified builder hall of fame. Students holding Solutions Architect, Developer, & AI Practitioner credentials.
+              </div>
+              <div class="demo-tag subtle" style="margin-top: 0.85rem; color: #FF9900; border-color: rgba(255, 153, 0, 0.35); font-weight: 700;">28+ CERTIFIED BUILDERS</div>
+            </div>
+
+            <div class="glass-card" style="padding: 1.75rem; text-align: center; border: 1px solid rgba(0, 255, 245, 0.2);">
+              <i data-lucide="zap" style="width: 28px; height: 28px; color: #00FFF5; margin: 0 auto 0.85rem auto;"></i>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.45rem;">Hackathon Sprints</h3>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+                National & regional hackathon triumphs including AWS BuildOn, Smart India Hackathon, and collegiate dev sprints.
+              </div>
+              <div class="demo-tag subtle" style="margin-top: 0.85rem; color: #00FFF5; border-color: rgba(0, 255, 245, 0.35); font-weight: 700;">14 PODIUM FINISHES</div>
+            </div>
+
+            <div class="glass-card" style="padding: 1.75rem; text-align: center; border: 1px solid rgba(16, 185, 129, 0.2);">
+              <i data-lucide="git-branch" style="width: 28px; height: 28px; color: var(--accent-emerald); margin: 0 auto 0.85rem auto;"></i>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.45rem;">Open Source Repos</h3>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+                Production AWS CDK v2 constructs, Bedrock RAG starters, and serverless blueprints authored by student builders.
+              </div>
+              <div class="demo-tag subtle" style="margin-top: 0.85rem; color: #10B981; border-color: rgba(16, 185, 129, 0.35); font-weight: 700;">18+ ACTIVE REPOSITORIES</div>
+            </div>
+
+            <div class="glass-card" style="padding: 1.75rem; text-align: center; border: 1px solid rgba(139, 92, 246, 0.2);">
+              <i data-lucide="users" style="width: 28px; height: 28px; color: var(--accent-purple); margin: 0 auto 0.85rem auto;"></i>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.45rem;">Community Cohorts</h3>
+              <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+                Active student builders mentored across our hands-on cloud computing, GenAI, and DevOps bootcamps.
+              </div>
+              <div class="demo-tag subtle" style="margin-top: 0.85rem; color: #8B5CF6; border-color: rgba(139, 92, 246, 0.35); font-weight: 700;">450+ ENROLLED BUILDERS</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           11. COMMUNITY GALLERY
+           ========================================== -->
+      <section id="gallery" class="section-wrapper" style="background: rgba(15, 20, 25, 0.35);">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Media & Memories</div>
+            <h2>Community Gallery</h2>
+            <p class="section-subtitle">
+              Visual snapshots from hands-on lab sessions, technical presentations, and collaborative coding sprints.
+            </p>
+          </div>
+
+          <div class="gallery-grid reveal-on-scroll" id="public-gallery-grid">
+            <!-- Rendered by app.js from /api/gallery -->
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           12. RECRUITMENT / BECOME A BUILDER
+           ========================================== -->
+      <section id="recruitments" class="section-wrapper">
+        <div class="container" style="max-width: 780px;">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Join the Community</div>
+            <h2>Become a Builder</h2>
+            <p class="section-subtitle">
+              Enrolled VPKBIET student? Submit your details to apply for student membership in the AWS Student Builder Group.
+            </p>
+          </div>
+
+          <div class="glass-card reveal-on-scroll" style="padding: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.85rem;">
+              <div>
+                <span class="service-pill aws-orange">Student Recruitment</span>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">
+                  Submissions are logged directly into the administrative recruitment pipeline.
+                </div>
+              </div>
+              <div class="demo-tag">LIVE FORM</div>
+            </div>
+
+            <form id="public-recruitment-form">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="form-group">
+                  <label class="form-label" for="rec-name">Full Name *</label>
+                  <input type="text" id="rec-name" class="form-input" placeholder="e.g. Student Name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="rec-email">College / Personal Email *</label>
+                  <input type="email" id="rec-email" class="form-input" placeholder="e.g. name@vpkbiet.ac.in" required />
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="form-group">
+                  <label class="form-label" for="rec-prn">VPKBIET PRN / Roll No *</label>
+                  <input type="text" id="rec-prn" class="form-input" placeholder="e.g. 72210892B" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="rec-year">Academic Year *</label>
+                  <select id="rec-year" class="form-select">
+                    <option value="FE">First Year (FE)</option>
+                    <option value="SE">Second Year (SE)</option>
+                    <option value="TE" selected>Third Year (TE)</option>
+                    <option value="BE">Final Year (BE)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="rec-domain">Preferred Technical Domain *</label>
+                <select id="rec-domain" class="form-select">
+                  <option value="Cloud & DevOps">Cloud & DevOps</option>
+                  <option value="AI & Machine Learning">AI & Machine Learning</option>
+                  <option value="Data & Analytics">Data & Analytics</option>
+                  <option value="Software Engineering">Software Engineering</option>
+                  <option value="Open Source & Systems">Open Source & Systems</option>
+                  <option value="UI/UX & Creative Technology">UI/UX & Creative Technology</option>
+                  <option value="Community & DevRel">Community & DevRel</option>
+                  <option value="Events & Operations">Events & Operations</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="rec-skills">Technical Skills & Familiar Tools</label>
+                <input type="text" id="rec-skills" class="form-input" placeholder="e.g. Python, Linux CLI, Docker, Git, AWS Free Tier" />
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="form-group">
+                  <label class="form-label" for="rec-github">GitHub Profile URL</label>
+                  <input type="url" id="rec-github" class="form-input" placeholder="https://github.com/your-username" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="rec-linkedin">LinkedIn Profile URL</label>
+                  <input type="url" id="rec-linkedin" class="form-input" placeholder="https://linkedin.com/in/your-profile" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="rec-pitch">Why do you want to join AWS SBG? *</label>
+                <textarea id="rec-pitch" class="form-textarea" rows="3" placeholder="Tell us what you hope to build, learn, or contribute..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.75rem;">
+                Submit Application <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+              </button>
+            </form>
+
+            <div id="recruitment-success-msg" style="display: none; text-align: center; padding: 2rem 1rem;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: rgba(16, 185, 129, 0.12); border: 2px solid var(--accent-emerald); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.85rem auto;">
+                <i data-lucide="check" style="width: 24px; height: 24px; color: var(--accent-emerald);"></i>
+              </div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 0.45rem;">Application Logged!</h3>
+              <p style="font-size: 0.92rem; color: var(--text-secondary); max-width: 460px; margin: 0 auto 1.25rem auto;">
+                Thank you for applying. Your submission has been saved with status <strong>Applied</strong>. The tech leads will review your application in the admin portal.
+              </p>
+              <button class="btn btn-secondary" onclick="resetRecruitmentForm()">
+                Submit Another Application
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           13. COMMUNITY & SOCIAL CHANNELS
+           ========================================== -->
+      <section id="community" class="section-wrapper" style="background: rgba(15, 20, 25, 0.35);">
+        <div class="container">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Ecosystem</div>
+            <h2>Join the Community</h2>
+            <p class="section-subtitle">
+              Connect across our official channels, join the discussion, and collaborate on shared repositories.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;" class="stagger-children reveal-on-scroll">
+            <div class="glass-card" style="padding: 1.5rem;">
+              <i data-lucide="cloud" style="width: 24px; height: 24px; color: var(--aws-smile-orange); margin-bottom: 0.65rem;"></i>
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.2rem;">AWS Builder Center</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem;">Explore technical blogs, builder IDs, and developer tutorials.</p>
+              <a href="https://builder.aws.amazon.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.35rem 0.7rem; width: 100%;">
+                Visit Portal <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
+              </a>
+            </div>
+
+            <div class="glass-card" style="padding: 1.5rem;">
+              <i data-lucide="github" style="width: 24px; height: 24px; color: var(--text-primary); margin-bottom: 0.65rem;"></i>
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.2rem;">GitHub Organization</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem;">Contribute to student starter templates and sample CDK kits.</p>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.35rem 0.7rem; width: 100%;">
+                Browse Repos <i data-lucide="external-link" style="width: 13px; height: 13px;"></i>
+              </a>
+            </div>
+
+            <div class="glass-card" style="padding: 1.5rem;">
+              <i data-lucide="message-square" style="width: 24px; height: 24px; color: var(--aws-cloud-blue); margin-bottom: 0.65rem;"></i>
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.2rem;">Discord Server</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem;">Real-time discussions, code help, and workshop stage streams.</p>
+              <div class="demo-tag subtle" style="width: 100%; text-align: center; justify-content: center; padding: 0.4rem;">
+                INVITE LINK COMING SOON
+              </div>
+            </div>
+
+            <div class="glass-card" style="padding: 1.5rem;">
+              <i data-lucide="linkedin" style="width: 24px; height: 24px; color: #0077B5; margin-bottom: 0.65rem;"></i>
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.2rem;">LinkedIn Network</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.85rem;">Stay updated on session dates, speaker announcements, and achievements.</p>
+              <div class="demo-tag subtle" style="width: 100%; text-align: center; justify-content: center; padding: 0.4rem;">
+                OFFICIAL LINK COMING SOON
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ==========================================
+           14. CONTACT FORM
+           ========================================== -->
+      <section id="contact" class="section-wrapper">
+        <div class="container" style="max-width: 680px;">
+          <div class="section-header reveal-on-scroll">
+            <div class="section-badge">Get in Touch</div>
+            <h2>Contact SBG VPKBIET</h2>
+            <p class="section-subtitle">
+              Have questions regarding student workshops, collaboration, or institutional activities? Drop us a message.
+            </p>
+          </div>
+
+          <div class="glass-card reveal-on-scroll" style="padding: 2rem;">
+            <form id="public-contact-form">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+                <div class="form-group">
+                  <label class="form-label" for="cnt-name">Your Name *</label>
+                  <input type="text" id="cnt-name" class="form-input" placeholder="e.g. Alex" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="cnt-email">Your Email *</label>
+                  <input type="email" id="cnt-email" class="form-input" placeholder="e.g. alex@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="cnt-subject">Subject</label>
+                <input type="text" id="cnt-subject" class="form-input" placeholder="e.g. Workshop question / Collaboration" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="cnt-msg">Message *</label>
+                <textarea id="cnt-msg" class="form-textarea" rows="4" placeholder="How can the student builder group assist you?" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Send Message <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+              </button>
+            </form>
+            <div id="contact-success-msg" style="display: none; color: var(--accent-emerald); text-align: center; margin-top: 0.85rem; font-weight: 600; font-size: 0.9rem;">
+              Message submitted successfully. Our team will review it in the admin console.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================
+         15. FOOTER
+         ========================================== -->
+    <footer style="background: #060910; border-top: 1px solid var(--border-subtle); padding: 3.5rem 0 1.75rem 0;">
+      <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem;">
+          <!-- Col 1 -->
+          <div>
+            <div style="font-weight: 800; font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.65rem;">
+              AWS SBG <span style="color: var(--aws-smile-orange);">VPKBIET</span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem;">
+              Vidya Pratishthan's Kamalnayan Bajaj Institute of Engineering and Technology, Baramati, Dist. Pune, Maharashtra 413133.
+            </p>
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">
+              Built by the SBG Tech Team
+            </div>
+          </div>
+
+          <!-- Col 2 -->
+          <div>
+            <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.85rem; font-size: 0.9rem;">Navigation</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem;">
+              <li><a href="#overview" style="color: var(--text-muted); transition: color 0.2s;">Home</a></li>
+              <li><a href="#about" style="color: var(--text-muted); transition: color 0.2s;">About</a></li>
+              <li><a href="#domains" style="color: var(--text-muted); transition: color 0.2s;">Domains</a></li>
+              <li><a href="#projects" style="color: var(--text-muted); transition: color 0.2s;">Projects</a></li>
+              <li><a href="#events" style="color: var(--text-muted); transition: color 0.2s;">Events</a></li>
+              <li><a href="#team" style="color: var(--text-muted); transition: color 0.2s;">Team Directory</a></li>
+              <li><a href="#recruitments" style="color: var(--text-muted); transition: color 0.2s;">Become a Builder</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3 -->
+          <div>
+            <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.85rem; font-size: 0.9rem;">Resources & Links</div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem;">
+              <li><a href="https://builder.aws.amazon.com" target="_blank" style="color: var(--text-muted); transition: color 0.2s;">AWS Builder Center</a></li>
+              <li><a href="https://explore.skillbuilder.aws" target="_blank" style="color: var(--text-muted); transition: color 0.2s;">AWS Skill Builder</a></li>
+              <li><a href="https://aws.amazon.com/architecture/well-architected" target="_blank" style="color: var(--text-muted); transition: color 0.2s;">Well-Architected Framework</a></li>
+              <li><a href="/admin" style="color: var(--aws-smile-orange); font-weight: 600;">Admin Dashboard →</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4 -->
+          <div>
+            <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.85rem; font-size: 0.9rem;">Demo Transparency</div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.85rem;">
+              This platform serves as the official demonstration prototype for AWS Student Builder Group at VPKBIET. Data presented represents demonstrative frameworks and seed content.
+            </p>
+            <div class="demo-tag">DEMO ENVIRONMENT</div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.85rem; font-size: 0.72rem; color: var(--text-muted);">
+          <div>
+            &copy; 2026 AWS Student Builder Group — VPKBIET Baramati. Independent student technology community.
+          </div>
+          <div>
+            Amazon Web Services and the AWS logo are trademarks of Amazon.com, Inc. or its affiliates.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==========================================
+         16. PROJECT ARCHITECTURE MODAL
+         ========================================== -->
+    <div id="project-detail-modal" class="modal-overlay">
+      <div class="modal-content" id="modal-project-content">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+
+    <!-- ==========================================
+         17. GALLERY LIGHTBOX MODAL
+         ========================================== -->
+    <div id="lightbox-modal" class="lightbox-overlay">
+      <div class="lightbox-content">
+        <button id="lightbox-close-btn" class="btn-ghost icon-btn" style="position: absolute; top: 0.85rem; right: 0.85rem; z-index: 10; background: rgba(0,0,0,0.6); border-radius: 8px;">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Gallery Preview" style="width: 100%; max-height: 500px; object-fit: contain; background: #000;" />
+        <div style="padding: 1rem 1.25rem;">
+          <h4 id="lightbox-title" style="font-size: 1.1rem; margin-bottom: 0.2rem;"></h4>
+          <p id="lightbox-caption" style="font-size: 0.82rem; color: var(--text-secondary);"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         18. EVENT REGISTRATION MODAL
+         ========================================== -->
+    <div id="event-reg-modal" class="modal-overlay">
+      <div class="modal-content" style="max-width: 480px; padding: 1.75rem; text-align: center;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: var(--aws-orange-muted); border: 1px solid rgba(255, 153, 0, 0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.85rem auto;">
+          <i data-lucide="calendar" style="width: 22px; height: 22px; color: var(--aws-smile-orange);"></i>
+        </div>
+        <h3 id="reg-event-title" style="font-size: 1.25rem; margin-bottom: 0.45rem;"></h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Event Registration Demo Interface. To officially register for upcoming workshops, complete the student onboarding form or check the community channel updates.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 0.75rem;">
+          <button class="btn btn-secondary close-modal-btn" onclick="document.getElementById('event-reg-modal').style.display='none'">
+            Close
+          </button>
+          <a href="#recruitments" class="btn btn-primary" onclick="document.getElementById('event-reg-modal').style.display='none'">
+            Go to Join Us Form
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         19. ASK SBG AI ASSISTANT
+         ========================================== -->
+    <div id="sbg-scout-trigger" class="sbg-scout-fab" title="Chat with Ask SBG AI Assistant">
+      <div style="width: 24px; height: 24px; border-radius: 8px; background: var(--aws-orange-muted); border: 1px solid rgba(255, 153, 0, 0.2); display: flex; align-items: center; justify-content: center;">
+        <i data-lucide="bot" style="width: 14px; height: 14px; color: var(--aws-smile-orange);"></i>
+      </div>
+      <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">Ask SBG</span>
+      <span class="status-dot"></span>
+    </div>
+
+    <div id="sbg-scout-drawer" class="scout-drawer">
+      <div style="padding: 1rem 1.25rem; background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.65rem;">
+          <div style="width: 32px; height: 32px; border-radius: 10px; background: var(--aws-orange-muted); border: 1px solid rgba(255, 153, 0, 0.2); display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="bot" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+          </div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem;">Ask SBG <span class="service-pill aws-orange" style="font-size: 0.58rem; padding: 0.1rem 0.3rem;">AI Ready</span></div>
+            <div style="font-size: 0.68rem; color: var(--accent-emerald);">Grounded in Community Info</div>
+          </div>
+        </div>
+        <button id="scout-close-btn" class="btn-ghost icon-btn">
+          <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+        </button>
+      </div>
+
+      <!-- Quick prompts -->
+      <div style="padding: 0.55rem 0.85rem; background: rgba(10, 14, 19, 0.9); border-bottom: 1px solid var(--border-subtle); display: flex; gap: 0.35rem; overflow-x: auto;">
+        <button class="service-pill scout-prompt-chip" data-q="What is AWS SBG VPKBIET?" style="cursor: pointer; white-space: nowrap;">What is SBG?</button>
+        <button class="service-pill scout-prompt-chip" data-q="Which technical teams can I join?" style="cursor: pointer; white-space: nowrap;">Domains</button>
+        <button class="service-pill scout-prompt-chip" data-q="What demo projects are featured?" style="cursor: pointer; white-space: nowrap;">Projects</button>
+        <button class="service-pill scout-prompt-chip" data-q="How do I apply to join?" style="cursor: pointer; white-space: nowrap;">How to Join?</button>
+      </div>
+
+      <!-- Messages -->
+      <div id="scout-messages" style="flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column;">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Input Form -->
+      <form id="scout-chat-form" style="padding: 0.75rem 0.85rem; background: rgba(10, 14, 19, 0.95); border-top: 1px solid var(--border-subtle); display: flex; gap: 0.4rem;">
+        <input type="text" id="scout-chat-input" class="form-input" placeholder="Ask about AWS concepts, domains..." style="font-size: 0.82rem; padding: 0.55rem 0.75rem;" autocomplete="off" />
+        <button type="submit" class="btn btn-primary" style="padding: 0.55rem 0.8rem;">
+          <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+        </button>
+      </form>
+    </div>
+
+    <!-- ==========================================
+         20. COMMAND PALETTE (CMD + K)
+         ========================================== -->
+    <div id="command-palette-modal" class="command-palette-overlay">
+      <div class="command-palette-card">
+        <div style="padding: 0.85rem 1.1rem; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.65rem;">
+          <i data-lucide="search" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+          <input type="text" id="palette-search-input" placeholder="Search sections, projects, events... (Esc to close)" style="width: 100%; background: transparent; border: none; color: var(--text-primary); font-size: 0.9rem; outline: none; font-family: inherit;" />
+          <span style="font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono); background: rgba(255,255,255,0.04); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border-subtle);">ESC</span>
+        </div>
+
+        <div style="max-height: 320px; overflow-y: auto; padding: 0.35rem 0;">
+          <div class="palette-item" data-action="nav" data-target="#projects">
+            <i data-lucide="layers" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Explore Demo Projects</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">View cloud architecture case studies</div>
+            </div>
+          </div>
+          <div class="palette-item" data-action="nav" data-target="#events">
+            <i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--aws-cloud-blue);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Upcoming Events & Workshops</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Browse bootcamps and hands-on labs</div>
+            </div>
+          </div>
+          <div class="palette-item" data-action="nav" data-target="#domains">
+            <i data-lucide="cpu" style="width: 16px; height: 16px; color: var(--accent-emerald);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Technical Domains</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Cloud, AI, Data, Software, UI/UX, DevRel</div>
+            </div>
+          </div>
+          <div class="palette-item" data-action="nav" data-target="#team">
+            <i data-lucide="users" style="width: 16px; height: 16px; color: var(--accent-purple);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Meet the Core Team</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Interactive organization directory</div>
+            </div>
+          </div>
+          <div class="palette-item" data-action="nav" data-target="#recruitments">
+            <i data-lucide="user-plus" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Become a Builder (Join Us)</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Student membership recruitment form</div>
+            </div>
+          </div>
+          <div class="palette-item" data-action="link" data-url="/admin">
+            <i data-lucide="shield" style="width: 16px; height: 16px; color: var(--aws-smile-orange);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-primary); font-size: 0.85rem;">Admin Management Console</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted);">Manage events, projects, members & applications</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Client Controller Script -->
+    <script type="module" src="/src/app.js"></script>
+    <!-- Cyberpunk Text Animations & Terminal -->
+    <script type="module">
+      import { initCyberpunkTerminal } from '/src/cyberpunk-text.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        const termRoot = document.getElementById('cyber-terminal-root');
+        if (termRoot) {
+          termRoot.style.display = 'block';
+          initCyberpunkTerminal('cyber-terminal-root');
+        }
+      });
+    </script>
+  </body>
+</html>
