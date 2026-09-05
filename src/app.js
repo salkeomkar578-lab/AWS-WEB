@@ -27,6 +27,9 @@ const appState = {
   ]
 };
 
+const GITHUB_ICON_SVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>`;
+const LINKEDIN_ICON_SVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>`;
+
 function initApp() {
   initHeroThreeCanvas();
   initCommandPalette();
@@ -57,7 +60,11 @@ if (document.readyState === 'loading') {
 
 function initLucideIcons() {
   if (window.lucide && typeof window.lucide.createIcons === 'function') {
-    window.lucide.createIcons();
+    try {
+      window.lucide.createIcons();
+    } catch (e) {
+      // Ignore any individual missing icon warnings
+    }
   }
 }
 
@@ -65,6 +72,9 @@ function initLucideIcons() {
 // 0. SCROLL REVEAL + NAVBAR SCROLL EFFECTS
 // ==========================================
 function initScrollRevealObserver() {
+  const targets = document.querySelectorAll('.reveal-on-scroll, .stagger-children');
+  targets.forEach(el => el.classList.add('visible'));
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -72,13 +82,11 @@ function initScrollRevealObserver() {
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px 60px 0px'
   });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  targets.forEach(el => observer.observe(el));
 }
 
 function initNavbarScroll() {
@@ -363,7 +371,7 @@ function initHeroThreeCanvas() {
 
     if (awsLogoModel) {
       // Stationary in center background with slow majestic breathing
-      logoGroup.position.set(0, Math.sin(time * 0.5) * 1.5, 0);
+      logoGroup.position.set(0, 5 + Math.sin(time * 0.5) * 1.5, 0);
       logoGroup.rotation.y = Math.sin(time * 0.22) * 0.16 + smMX;
       logoGroup.rotation.x = Math.sin(time * 0.16) * 0.06 - smMY;
       logoGroup.scale.setScalar(1 + Math.sin(time * 0.6) * 0.012);
@@ -395,34 +403,6 @@ function initHeroThreeCanvas() {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 }
-
-    // Particle field slow drift
-    const pos = pGeo.attributes.position.array;
-    for (let i = 0; i < particleCount; i++) {
-      pos[i*3]   += pVel[i].x;
-      pos[i*3+1] += pVel[i].y;
-      pos[i*3+2] += pVel[i].z;
-      if (Math.abs(pos[i*3])   > 270) pVel[i].x *= -1;
-      if (Math.abs(pos[i*3+1]) > 175) pVel[i].y *= -1;
-      if (Math.abs(pos[i*3+2]) >  80) pVel[i].z *= -1;
-    }
-    pGeo.attributes.position.needsUpdate = true;
-    particles.rotation.y += 0.00015;
-    particles.rotation.x += 0.00004;
-
-    renderer.render(scene, camera);
-  }
-
-  animate();
-
-  window.addEventListener('resize', () => {
-    if (!canvas) return;
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-}
-
 
 // ==========================================
 // 3. DOMAINS SECTION
@@ -542,7 +522,7 @@ function renderProjects() {
       ${contribs.length > 0 ? `<div style="font-size:0.68rem;color:var(--text-muted);margin-bottom:0.85rem;font-family:var(--font-mono);">&#128101; ${contribs.join(' &middot; ')}</div>` : ''}
       <div style="border-top:1px solid var(--border-subtle);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;gap:0.4rem;">
-          <a href="${p.githubUrl||'#'}" target="_blank" class="btn-ghost icon-btn" title="GitHub Repository"><i data-lucide="github" style="width:15px;height:15px;"></i></a>
+          <a href="${p.githubUrl||'#'}" target="_blank" class="btn-ghost icon-btn" title="GitHub Repository">${GITHUB_ICON_SVG}</a>
           <a href="${p.demoUrl||'#'}" target="_blank" class="btn-ghost icon-btn" title="Live Demo / Docs"><i data-lucide="external-link" style="width:15px;height:15px;"></i></a>
         </div>
         <button class="btn btn-secondary" style="padding:0.38rem 0.7rem;font-size:0.75rem;border-color:${col}40;" onclick="openProjectArchitectureModal('${p.id}')">Architecture <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></button>
@@ -614,8 +594,8 @@ window.openProjectArchitectureModal = function(projectId) {
       </div>
 
       <div style="display: flex; justify-content: flex-end; gap: 0.65rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
-        <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.82rem;">
-          <i data-lucide="github" style="width: 14px; height: 14px;"></i> GitHub Template
+        <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+          ${GITHUB_ICON_SVG} GitHub Template
         </a>
         <button class="btn btn-primary" style="font-size: 0.82rem;" onclick="document.getElementById('project-detail-modal').style.display='none'">
           Close Spec
@@ -711,8 +691,8 @@ function renderMembers() {
       ${certs.length > 0 ? `<div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:0.65rem;">${certs.map(c=>`<span class="cyber-cert-pill">&#10022; ${c}</span>`).join('')}</div>` : ''}
       ${skills.length > 0 ? `<div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.85rem;">${skills.map(s=>`<span class="cyber-skill-pill">${s}</span>`).join('')}</div>` : ''}
       <div style="display:flex;gap:0.5rem;border-top:1px solid var(--border-subtle);padding-top:0.75rem;align-items:center;">
-        <a href="${m.github||'#'}" target="_blank" class="cyber-social-btn"><i data-lucide="github" style="width:14px;height:14px;"></i></a>
-        <a href="${m.linkedin||'#'}" target="_blank" class="cyber-social-btn"><i data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+        <a href="${m.github||'#'}" target="_blank" class="cyber-social-btn" title="GitHub Profile">${GITHUB_ICON_SVG}</a>
+        <a href="${m.linkedin||'#'}" target="_blank" class="cyber-social-btn" title="LinkedIn Profile">${LINKEDIN_ICON_SVG}</a>
         <span style="flex:1;"></span>
         <span style="font-size:0.62rem;font-family:var(--font-mono);color:var(--text-muted);padding:0.15rem 0.4rem;background:rgba(255,255,255,0.03);border-radius:4px;border:1px solid var(--border-subtle);">${m.domain}</span>
       </div>
