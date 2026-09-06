@@ -498,11 +498,27 @@ const server = http.createServer(handleRequest);
 
 // Local development server runner
 if (require.main === module || !process.env.VERCEL) {
-  server.listen(PORT, () => {
-    console.log(`🚀 AWS SBG VPKBIET Platform running at http://localhost:${PORT}`);
-    console.log(`⚡ Public Portal: http://localhost:${PORT}/`);
-    console.log(`🛡️ Admin Console: http://localhost:${PORT}/admin`);
-  });
+  function startServer(portToTry) {
+    server.removeAllListeners('error');
+    server.once('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        console.log(`⚠️ Port ${portToTry} is already in use.`);
+        const nextPort = Number(portToTry) + 1;
+        console.log(`🔄 Automatically trying port ${nextPort}...`);
+        startServer(nextPort);
+      } else {
+        console.error('Server error:', err);
+      }
+    });
+
+    server.listen(portToTry, () => {
+      console.log(`🚀 AWS SBG VPKBIET Platform running at http://localhost:${portToTry}`);
+      console.log(`⚡ Public Portal: http://localhost:${portToTry}/`);
+      console.log(`🛡️ Admin Console: http://localhost:${portToTry}/admin`);
+    });
+  }
+
+  startServer(PORT);
 }
 
 module.exports = handleRequest;
